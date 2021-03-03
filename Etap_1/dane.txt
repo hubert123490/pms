@@ -20,19 +20,32 @@ Opis funkcjonalności systemu
 dostać się do swojego profilu w którym będzie mógł śledzić dane na temat wynajmowanych nieruchomości.
 Agent nieruchomości będzie miał dostęp do zarządzania nieruchomościami (dodawanie, usuwanie, przeglądanie oraz aktualizowanie).
 
-- Wynajem nieruchomości (dla klienta) - klient będzie w stanie dokonać wynajmu nieruchomości.
+- Wynajem nieruchomości (dla klienta) - klient, będzie w stanie dokonać wynajmu nieruchomości.
+
+- Odstąpienie od wynajmu (dla klienta) - klient, będzie w stanie odstąpić od wynajmu danej nieruchomości.
 
 - Zarządzanie nieruchomościami (dla agenta) - agent nieruchomości będzie w stanie dodawać, usuwać, przeglądać oraz aktualizować nieruchomości.
 
+- Dodawanie opinii (dla klienta) - klient, będzie mógł wystawić opinię na temat wynajmującego.
+
+- Dodawanie opinii (dla agenta) - agent, będzie mógł wystawić opinię o wynajmującym.
+
+- Zarządzanie użytkownikami (administrator) - administrator, będzie mógł zarządzać kontami użytkowników 
+
 Użytkownicy systemu
 - gość : użytkownik niezalogowany, będzie miał możliwość przeglądu nieruchomości.
-- klient : użytkownik systemu o uprawnieniach klienta, będzie miał możliwość wynajmu, a także dostępu do informacji wynajmowanych nieruchomości.
+- klient : użytkownik systemu o uprawnieniach klienta, będzie miał możliwość wynajmu, odstąpienia od wynajmu, a także dostępu do informacji wynajmowanych nieruchomości.
 - agent : użytkownik systemu o uprawnieniach agenta, będzie miał możliwość dodawania, usuwania, przeglądania oraz aktualizowania nieruchomości.
+- administrator : użytkownik mający wgląd w dane użytkowników systemu, będzie miał możliwość usuwania kont użytkówników.
 
 ##################################################################################
 Dane zespołu:
 - Hubert Kowalczyk hubert1234.90@o2.pl
 - Mateusz Bzymek mbzymek99@wp.pl
+
+Podział prac:
+Hubert Kowalczyk - klient, administrator
+Mateusz Bzymek - agent
 
 ###################################################################################
 Wykorzystywane technologie:
