@@ -9,7 +9,7 @@ System zarządzania nieruchomościami
 ###############################################################################
 Zakres projektu
 System zarządzania nieruchomościami, będzie systemem pms (property management system), służącym do zarządzania nieruchomościami.
-Umożliwiał on będzie takie funkcjonalności jak: przeglądanie nieruchomości, zakup nieruchomości, aktualizowanie nieruchomości, dodawanie nieruchomości.
+Umożliwiał on będzie takie funkcjonalności jak: przeglądanie nieruchomości, wynajem nieruchomości, aktualizowanie nieruchomości, dodawanie nieruchomości.
 Ponadto użytkownicy systemu posiadać będą rożne uprawnienia.
 
 ##################################################################################
@@ -17,16 +17,16 @@ Opis funkcjonalności systemu
 - Przegląd nieruchomości (niezalogowany użytkownik) : użytkownik będzie miał możliwość przeglądania nieruchomości.
 
 - Rejestracja klienta i agenta nieruchomości: tworzenie kont użytkowników systemu. Po utworzeniu konta klient może się zalogować, aby 
-dostać się do swojego profilu w którym będzie mógł śledzić dane na temat zakupionych nieruchomości.
+dostać się do swojego profilu w którym będzie mógł śledzić dane na temat wynajmowanych nieruchomości.
 Agent nieruchomości będzie miał dostęp do zarządzania nieruchomościami (dodawanie, usuwanie, przeglądanie oraz aktualizowanie).
 
-- Zakup nieruchomości (dla klienta) - klient będzie w stanie dokonać zakupu nieruchomości.
+- Wynajem nieruchomości (dla klienta) - klient będzie w stanie dokonać wynajmu nieruchomości.
 
 - Zarządzanie nieruchomościami (dla agenta) - agent nieruchomości będzie w stanie dodawać, usuwać, przeglądać oraz aktualizować nieruchomości.
 
 Użytkownicy systemu
 - gość : użytkownik niezalogowany, będzie miał możliwość przeglądu nieruchomości.
-- klient : użytkownik systemu o uprawnieniach klienta, będzie miał możliwość zakupu, a także dostępu do informacji zakupionych nieruchomości.
+- klient : użytkownik systemu o uprawnieniach klienta, będzie miał możliwość wynajmu, a także dostępu do informacji wynajmowanych nieruchomości.
 - agent : użytkownik systemu o uprawnieniach agenta, będzie miał możliwość dodawania, usuwania, przeglądania oraz aktualizowania nieruchomości.
 
 ##################################################################################
