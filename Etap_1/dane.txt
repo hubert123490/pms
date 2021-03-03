@@ -14,7 +14,7 @@ Ponadto użytkownicy systemu posiadać będą rożne uprawnienia.
 
 ##################################################################################
 Opis funkcjonalności systemu
-- Przegląd nieruchomości (niezalogowany użytkownik) : użytkownik będzie miał możliwość przeglądania nieruchomości.
+- Przegląd nieruchomości (niezalogowany użytkownik) : użytkownik będzie miał możliwość przeglądania dostępnych nieruchomości o konkretnej lokalizacjii i podanym terminie.
 
 - Rejestracja klienta i agenta nieruchomości: tworzenie kont użytkowników systemu. Po utworzeniu konta klient może się zalogować, aby 
 dostać się do swojego profilu w którym będzie mógł śledzić dane na temat wynajmowanych nieruchomości.
@@ -30,10 +30,14 @@ Użytkownicy systemu
 - agent : użytkownik systemu o uprawnieniach agenta, będzie miał możliwość dodawania, usuwania, przeglądania oraz aktualizowania nieruchomości.
 
 ##################################################################################
+Dane zespołu:
+- Hubert Kowalczyk hubert1234.90@o2.pl
+- Mateusz Bzymek mbzymek99@wp.pl
+
+###################################################################################
 Wykorzystywane technologie:
 - Back end : Spring, Maven
-(nie wymieniamy dokładnie zależności gdyż zawsze możemy je zmienić,dodać albo usunąć)
-- Front end : Vue.js
-- Baza danych : 
+- Front end : Vue.js, Bootstrap
+- Baza danych : H2
 
 ##################################################################
