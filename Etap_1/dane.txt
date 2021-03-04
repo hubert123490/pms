@@ -1,42 +1,40 @@
-# dodac baze danych
-# skład zespół (imiona, nazwiska i adresy e-mail) oraz podział prac,
-# dla każdego studenta należy podać zrealizowany temat z przedmiotów: "Inżynieria systemów informacyjnych", "Podstawy inżynierii programowania" / 
-# "Inżynieria programowania" oraz temat pracy inżynierskiej (jeżeli został już wybrany),
-
+##################################################################################
 Temat 
-System zarządzania nieruchomościami
+System zarządzania nieruchomościami.
 
-###############################################################################
+##################################################################################
 Zakres projektu
 System zarządzania nieruchomościami, będzie systemem pms (property management system), służącym do zarządzania nieruchomościami.
-Umożliwiał on będzie takie funkcjonalności jak: przeglądanie nieruchomości, wynajem nieruchomości, aktualizowanie nieruchomości, dodawanie nieruchomości.
+Umożliwiał on będzie takie funkcjonalności jak: przeglądanie nieruchomości, wynajem nieruchomości, aktualizowanie nieruchomości, dodawanie nieruchomości, usuwanie nieruchomości.
 Ponadto użytkownicy systemu posiadać będą rożne uprawnienia.
 
 ##################################################################################
 Opis funkcjonalności systemu
-- Przegląd nieruchomości (niezalogowany użytkownik) : użytkownik będzie miał możliwość przeglądania dostępnych nieruchomości o konkretnej lokalizacjii i podanym terminie.
+- Przegląd nieruchomości (niezalogowany użytkownik) : użytkownik będzie miał możliwość przeglądania dostępnych nieruchomości o konkretnej lokalizacji i w podanym terminie.
 
-- Rejestracja klienta i agenta nieruchomości: tworzenie kont użytkowników systemu. Po utworzeniu konta klient może się zalogować, aby 
+- Rejestracja wynajmującego i właściciela nieruchomości : tworzenie kont użytkowników systemu. Po utworzeniu konta wynajmujący może się zalogować, aby 
 dostać się do swojego profilu w którym będzie mógł śledzić dane na temat wynajmowanych nieruchomości.
-Agent nieruchomości będzie miał dostęp do zarządzania nieruchomościami (dodawanie, usuwanie, przeglądanie oraz aktualizowanie).
+Właściciel nieruchomości będzie miał dostęp do zarządzania nieruchomościami (dodawanie, usuwanie, przeglądanie oraz aktualizowanie).
 
-- Wynajem nieruchomości (dla klienta) - klient, będzie w stanie dokonać wynajmu nieruchomości.
+- Wynajem nieruchomości (dla wynajmującego) : wynajmujący, będzie w stanie dokonać wynajmu nieruchomości.
 
-- Odstąpienie od wynajmu (dla klienta) - klient, będzie w stanie odstąpić od wynajmu danej nieruchomości.
+- Odstąpienie od wynajmu (dla wynajmującego) : wynajmujący, będzie w stanie odstąpić od wynajmu danej nieruchomości.
 
-- Zarządzanie nieruchomościami (dla agenta) - agent nieruchomości będzie w stanie dodawać, usuwać, przeglądać oraz aktualizować nieruchomości.
+- Przegląd wynajmowanych nieruchomości (dla wynajmującego) : wynajmujący, będzie miał dostęp do informacji o wynajmowanych nieruchomościach.
 
-- Dodawanie opinii (dla klienta) - klient, będzie mógł wystawić opinię na temat wynajmującego.
+- Zarządzanie nieruchomościami (dla właściciela nieruchomości) : właściciel nieruchomości będzie w stanie dodawać, usuwać, przeglądać oraz aktualizować nieruchomości.
 
-- Dodawanie opinii (dla agenta) - agent, będzie mógł wystawić opinię o wynajmującym.
+- Dodawanie opinii (dla wynajmującego) : wynajmujący, będzie mógł wystawić opinię na temat właściciela danej nieruchomości u której wynajmuje stancję.
 
-- Zarządzanie użytkownikami (administrator) - administrator, będzie mógł zarządzać kontami użytkowników 
+- Dodawanie opinii (dla właściciela nieruchomości) : właściciel, będzie mógł wystawić opinię o wynajmujących posiadaną przez niego stancję.
+
+- Zarządzanie użytkownikami (administrator) : administrator, będzie mógł zarządzać kontami użytkowników.
 
 Użytkownicy systemu
 - gość : użytkownik niezalogowany, będzie miał możliwość przeglądu nieruchomości.
-- klient : użytkownik systemu o uprawnieniach klienta, będzie miał możliwość wynajmu, odstąpienia od wynajmu, a także dostępu do informacji wynajmowanych nieruchomości.
-- agent : użytkownik systemu o uprawnieniach agenta, będzie miał możliwość dodawania, usuwania, przeglądania oraz aktualizowania nieruchomości.
-- administrator : użytkownik mający wgląd w dane użytkowników systemu, będzie miał możliwość usuwania kont użytkówników.
+- wynajmujący (tenant) : użytkownik systemu o uprawnieniach wynajmującego, będzie miał możliwość wynajmu, odstąpienia od wynajmu, a także dostępu do informacji wynajmowanych nieruchomości.
+- właściciel nieruchomości (landlord) : użytkownik systemu o uprawnieniach właściciela, będzie miał możliwość dodawania, usuwania, przeglądania oraz aktualizowania nieruchomości.
+- administrator (admin) : użytkownik mający wgląd w dane użytkowników systemu, będzie miał możliwość usuwania kont użytkowników.
 
 ##################################################################################
 Dane zespołu:
@@ -44,13 +42,24 @@ Dane zespołu:
 - Mateusz Bzymek mbzymek99@wp.pl
 
 Podział prac:
-Hubert Kowalczyk - klient, administrator
-Mateusz Bzymek - agent
+Hubert Kowalczyk - wynajmujący, administrator
+Mateusz Bzymek - właściciel nieruchomości
 
-###################################################################################
+Tematy
+Hubert Kowalczyk
+PIP - Warsztat samochodowy
+Praca inżynierska - nie wybrany
+ISI - temat nie wybrany
+
+Mateusz Bzymek 
+PIP - System zarządzania restauracją
+Praca inżynierska - temat nie wybrany
+ISI - temat nie wybrany
+
+##################################################################################
 Wykorzystywane technologie:
 - Back end : Spring, Maven
 - Front end : Vue.js, Bootstrap
 - Baza danych : H2
 
-##################################################################
+##################################################################################
