@@ -5,8 +5,8 @@ System zarządzania nieruchomościami.
 ##################################################################################
 Zakres projektu
 System zarządzania nieruchomościami, będzie systemem pms (property management system), służącym do zarządzania nieruchomościami.
-Umożliwiał on będzie takie funkcjonalności jak: przeglądanie nieruchomości, wynajem nieruchomości, aktualizowanie nieruchomości, dodawanie nieruchomości, usuwanie nieruchomości.
-Ponadto użytkownicy systemu posiadać będą rożne uprawnienia.
+Umożliwiał on będzie takie funkcjonalności jak: przeglądanie nieruchomości, wynajem nieruchomości, aktualizowanie nieruchomości,
+dodawanie nieruchomości, usuwanie nieruchomości. Ponadto użytkownicy systemu posiadać będą różne uprawnienia.
 
 ##################################################################################
 Opis funkcjonalności systemu
@@ -48,7 +48,7 @@ Mateusz Bzymek - właściciel nieruchomości
 Tematy
 Hubert Kowalczyk
 PIP - Warsztat samochodowy
-Praca inżynierska - nie wybrany
+Praca inżynierska - temat nie wybrany
 ISI - temat nie wybrany
 
 Mateusz Bzymek 
