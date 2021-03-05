@@ -26,7 +26,7 @@ Właściciel nieruchomości będzie miał dostęp do zarządzania nieruchomości
 
 - Dodawanie opinii (dla wynajmującego) : wynajmujący, będzie mógł wystawić opinię na temat właściciela danej nieruchomości u której wynajmuje stancję.
 
-- Dodawanie opinii (dla właściciela nieruchomości) : właściciel, będzie mógł wystawić opinię o wynajmujących posiadaną przez niego stancję.
+- Dodawanie opinii (dla właściciela nieruchomości) : właściciel, będzie mógł wystawić opinię o wynajmujących dla posiadanej przez niego stancji.
 
 - Zarządzanie użytkownikami (administrator) : administrator, będzie mógł zarządzać kontami użytkowników.
 
