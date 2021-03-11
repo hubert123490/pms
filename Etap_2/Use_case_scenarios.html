@@ -9,197 +9,126 @@
     <h4>Use case scenarios</h4>
 
     <table border="1">
-        <thead>
-        <tr>
-            <th>Sekcja</th>
-            <th>Komentarz</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <th>Nazwa przypadku użycia</th>
+        <tbody><tr>
+            <th>Author name:</th>
             <td style="width: 15cm;">
-                Zarejestruj się
+                Dawid
             </td>
         </tr>
         <tr>
-            <th>Zakres</th>
+            <th>Author surname:</th>
             <td style="width: 15cm;">
-                -
+                Milczarek
             </td>
         </tr>
         <tr>
-            <th>Poziom</th>
+            <th>Author group:</th>
             <td style="width: 15cm;">
-                Uzyskanie uprawnień wynajmującego lub właściciela nieruchomości
+                3ID11B
             </td>
         </tr>
         <tr>
-            <th>Aktor pierwszoplanowy</th>
+            <th>Subject:</th>
             <td style="width: 15cm;">
-                Niezalogowany użytkownik (gość)
+                Car repair shop
             </td>
         </tr>
         <tr>
-            <th>Interesariusze i ich cele</th>
+            <th>Use Case:</th>
             <td style="width: 15cm;">
-                Osoba, która chce wynająć nieruchomość albo ją wynajmować dla osób trzecich
+                Make an appointment
             </td>
         </tr>
         <tr>
-            <th>Warunki początkowe</th>
+            <th>Language:</th>
             <td style="width: 15cm;">
-                Brak
+                English
             </td>
         </tr>
         <tr>
-            <th>Gwarancja sukcesu (warunki końcowe)</th>
-            <td style="width: 15cm;">
-                Otrzymanie możliwości zalogowania do systemu jako wynajmujący lub właściciel nieruchomości
-            </td>
-        </tr>
-        <tr>
-            <th>Główny scenariusz sukcesu</th>
-            <td style="width: 15cm;">
-                <ol>
-                    <li>Użytkownik otrzymuje formularz do wypełnienia</li>
-                    <li>System weryfikuje poprawność wprowadzonych danych</li>
-                    <li>Użytkownik otrzymuje możliwość zalogowania się na podstawie wprowadzonych wcześniej danych</li>
-                </ol>
-            </td>
-        </tr>
-        <tr>
-            <th>Rozszerzenia</th>
+            <th>Preconditions:</th>
             <td style="width: 15cm;">
                 <ul>
-                    <li>2. Niepoprawne dane GOTO 1</li>
+                    <li>
+                        The user must be logged in to the system.
+                    </li>
                 </ul>
             </td>
         </tr>
         <tr>
-            <th>Dodatkowe wymagania</th>
-            <td style="width: 15cm;">
-                Brak
-            </td>
-        </tr>
-        <tr>
-            <th>Technologie i format danych</th>
-            <td style="width: 15cm;">
-                Format zwróconych danych do serwera : JSON<br>
-                Możliwe zaszyfrowanie hasła
-            </td>
-        </tr>
-        <tr>
-            <th>Częstość występowania</th>
-            <td style="width: 15cm;">
-                -
-            </td>
-        </tr>
-        <tr>
-            <th>Inne</th>
-            <td style="width: 15cm;">
-                Brak
-            </td>
-        </tr>
-        </tbody>
-    </table><br><br><br>
-
-    <table border="1">
-        <thead>
-        <tr>
-            <th>Sekcja</th>
-            <th>Komentarz</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <th>Nazwa przypadku użycia</th>
-            <td style="width: 15cm;">
-                Zaloguj się
-            </td>
-        </tr>
-        <tr>
-            <th>Zakres</th>
-            <td style="width: 15cm;">
-                -
-            </td>
-        </tr>
-        <tr>
-            <th>Poziom</th>
-            <td style="width: 15cm;">
-                Uzyskanie uprawnień wynajmującego lub właściciela nieruchomości
-            </td>
-        </tr>
-        <tr>
-            <th>Aktor pierwszoplanowy</th>
-            <td style="width: 15cm;">
-                Niezalogowany użytkownik (gość)
-            </td>
-        </tr>
-        <tr>
-            <th>Interesariusze i ich cele</th>
-            <td style="width: 15cm;">
-                Osoba, która chce wynająć nieruchomość albo ją wynajmować dla osób trzecich
-            </td>
-        </tr>
-        <tr>
-            <th>Warunki początkowe</th>
-            <td style="width: 15cm;">
-                Brak
-            </td>
-        </tr>
-        <tr>
-            <th>Gwarancja sukcesu (warunki końcowe)</th>
-            <td style="width: 15cm;">
-                Otrzymanie możliwości zalogowania do systemu jako wynajmujący lub właściciel nieruchomości
-            </td>
-        </tr>
-        <tr>
-            <th>Główny scenariusz sukcesu</th>
-            <td style="width: 15cm;">
-                <ol>
-                    <li>Użytkownik otrzymuje formularz do wypełnienia</li>
-                    <li>System weryfikuje poprawność wprowadzonych danych</li>
-                    <li>Użytkownik otrzymuje możliwość zalogowania się na podstawie wprowadzonych wcześniej danych</li>
-                </ol>
-            </td>
-        </tr>
-        <tr>
-            <th>Rozszerzenia</th>
+            <th>Postconditions:</th>
             <td style="width: 15cm;">
                 <ul>
-                    <li>2. Niepoprawne dane GOTO 1</li>
+                    <li>
+                        An appointment
+                    </li>
                 </ul>
             </td>
         </tr>
         <tr>
-            <th>Dodatkowe wymagania</th>
+            <th>Actors:</th>
             <td style="width: 15cm;">
-                Brak
+                <ul>
+                    <li>
+                        Client
+                    </li>
+                </ul>
             </td>
         </tr>
         <tr>
-            <th>Technologie i format danych</th>
+            <th>Main flow:</th>
             <td style="width: 15cm;">
-                Format zwróconych danych do serwera : JSON<br>
-                Możliwe zaszyfrowanie hasła
+                <ol>
+                    <li>
+                        The customer selects the option "Make an appointment"
+                    </li>
+                    <li>
+                        The system displays the visit appointment form
+                    </li>
+                    <li>
+                        The customer completes the form data
+                    </li>
+                    <li>
+                        The customer approves the form
+                    </li>
+                    <li>
+                        The system verifies the correctness of the data
+                    </li>
+                    <li>
+                        The system adds a new visit
+                    </li>
+                </ol>
             </td>
         </tr>
         <tr>
-            <th>Częstość występowania</th>
+            <th>Alternate flow:</th>
             <td style="width: 15cm;">
-                -
+                <ul>
+                    <li>
+                        <span class="number">5</span>
+                        <span class="condition">The date of the visit was incorrect</span>
+                        <span class="reaction-additional"></span>
+                        <span class="reaction-type">GOTO</span>
+                        <span class="reaction-goto">2</span>
+                    </li>
+                    <li>
+                        <span class="number">5</span>
+                        <span class="condition">Incorrect car VIN number entered</span>
+                        <span class="reaction-additional"></span>
+                        <span class="reaction-type">GOTO</span>
+                        <span class="reaction-goto">2</span>
+                    </li>
+                    <li>
+                        <span class="number">5</span>
+                        <span class="condition">Incorrect car registration provided</span>
+                        <span class="reaction-additional"></span>
+                        <span class="reaction-type">GOTO</span>
+                        <span class="reaction-goto">2</span>
+                    </li>
+                </ul>
             </td>
         </tr>
-        <tr>
-            <th>Inne</th>
-            <td style="width: 15cm;">
-                Brak
-            </td>
-        </tr>
-        </tbody>
-    </table>
-
+        </tbody></table>
 </article>
 </body>
 </html>
