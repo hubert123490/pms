@@ -1,0 +1,192 @@
+
+Scenariusze przypadków użycia
+Imie 	Mateusz
+Nazwisko 	Bzymek
+Grupa 	3ID11A
+Nazwa: 	Wprowadź nieruchomość do systemu
+Warunki początkowe: 	
+
+    Właściciel nieruchomości musi być zalogowany do systemu.
+
+Warunek Końcowy: 	
+
+    Nieruchomość wprowadzona do systemu
+
+Aktor: 	
+
+    Właściciel
+
+Główny przebieg: 	
+
+    Właściciel wprowadza nazwe obiektu
+    Właściciel wprowadza adres obiektu(Nazwa ulicy, numer domu,kod pocztowy,miasto)
+    Właściciel wprowadza podstawowe dane obiektu (ilość sypialni,ilość miejsc do spania,powierzchnia)
+    Właściciel wprowadza iformacje dodatkowe o nieruchomości(opcjonalne) np darmowe wi-fi, parking
+    Właściciel wprowadza zasady obiektu zakaz palenia itp zameldowanie/wymeldownie (od-do)
+    Właściciel wprowadza zdjęcia nieruchomości
+    Właściciel wprowadza cene za noc
+    System wyswietla podsumowanie wprowadzonych danych
+    Właściciel zatwierdza dane
+
+Przebieg alternatywny: 	
+
+    8 Błędnie wprowadzone dane idź do punktu nr 1
+
+
+
+Imie 	Mateusz
+Nazwisko 	Bzymek
+Grupa 	3ID11A
+Nazwa: 	Edytuj nieruchomości w systemie
+Warunki początkowe: 	
+
+    Właściciel nieruchomości musi być zalogowany do systemu.
+
+Warunek Końcowy: 	
+
+    Edytowana nieruchomość wprowadzona do systemu
+
+Aktor: 	
+
+    Właściciel
+
+Główny przebieg: 	
+
+    System wyświetla wszystkie nieruchomości właściciela
+    Właściciel wybiera nieruchomość do edycji
+    Właściciel wybiera co chce edytować
+    Właściciel dokonuje edycji
+    System wyswietla dane obiektu po edycji
+    Właściciel zatwierdza edycje
+
+
+
+Imie 	Mateusz
+Nazwisko 	Bzymek
+Grupa 	3ID11A
+Nazwa: 	Rejestracja użytkownika
+Warunki początkowe: 	
+
+    użytkownik nie może być zalgowany
+
+Warunek Końcowy: 	
+
+    użytkownik wprowadzony do systemu
+
+Aktor: 	
+
+    użytkownik niezalogowany
+
+Główny przebieg: 	
+
+    Użytkownik niezalogowany wybiera typ konta do rejestracji (właścieciel/klient)
+    Użytkownik niezalogowany wprowadza dane potrzebne do rejestracji
+    Użytkownik akceptuje regulamin
+    System weryfikuje poprawność wprowadzonych danych
+    Użytkownik otrzymuje możliwość zalogowania się na podstawie wprowadzonych wcześniej danych
+
+Przebieg alternatywny: 	
+
+    4 Błędnie wprowadzone dane idź do punktu nr 2
+
+
+
+Imie 	Hubert
+Nazwisko: 	Kowalczyk
+Grupa 	3ID11A
+Nazwa: 	Dodaj opinię
+Warunki początkowe: 	
+
+    Użytkownik musi być zalogowany w systemie.
+
+Warunek końcowy: 	
+
+    Opinia wystawiona
+
+Aktor: 	
+
+    Wynajmujący (tenant)
+
+Główny przebieg: 	
+
+    System wyświetla polę dodania opinii
+    Użytkownik wybiera wystawienie opinii dla danego właściciela nieruchomości (w przypadku wynajmującego)
+    Użytkownik podaje swoją opinię
+    System wyświetla opcję edycji opinii
+    System wyświetla podsumowanie opinii po edycji
+    Użytkownik potwierdza i umieszcza opinię
+    System akceptuje dodanie opinii przez klienta
+
+Przebieg alternatywny: 	
+
+    2 Brak właściciela nieruchomości END FLOW
+    3 Pole opinii jest puste GOTO 2
+    6 Użytkownik anulował operację dodawania opinii END FLOW
+
+
+
+Imie 	Hubert
+Nazwisko 	Kowalczyk
+Grupa 	3ID11A
+Nazwa: 	Wynajmij apartament
+Warunki początkowe: 	
+
+    Użytkownik musi być zalogowany w systemie.
+
+Warunek końcowy: 	
+
+    Wynajęto apartament
+
+Aktor: 	
+
+    Wynajmujący (tenant)
+
+Główny przebieg: 	
+
+    System wyświetla dostępne apartamenty w danej lokalizacji
+    Użytkownik wybiera dany apartament
+    Użytkownik wypełnia formularz
+    System sprawdza poprawność wprowadzonych danych
+    System nawiązuje sesję z danym serwisem bankowym i oczekuje potwierdzenia płatności
+    System wyświetla podsumowanie wprowadzonych danych i finalizuję transakcję
+
+Przebieg alternatywny: 	
+
+    1 Nie znaleziono żadnych nieruchomości NONE
+    4 Wprowadzone dane są niepoprawne GOTO 3
+    5 Użytkownik anulował operację lub zerwał sesję z bankiem (nie dokonał płatności) END FLOW
+
+
+
+Imie 	Hubert
+Nazwisko 	Kowalczyk
+Grupa 	3ID11A
+Nazwa: 	Odstąp od wynajmowania danego mieszkania
+Warunki początkowe: 	
+
+    Użytkownik musi być zalogowany w systemie. Użytkownik musi wynajmować przynajmniej jeden apartament.
+
+Warunek końcowy: 	
+
+    Odstąpiono od wynajmu danego mieszkania.
+
+Aktor: 	
+
+    Wynajmujący (tenant)
+
+Główny przebieg: 	
+
+    System wyświetla wynajmowane apartamenty przez użytkownika
+    Użytkownik wybiera apartament
+    Użytkownik wypełnia formularz
+    System sprawdza poprawność wprowadzonych danych
+    System usuwa dany apartament z panelu klienta i finalizuje proces
+
+Przebieg alternatywny: 	
+
+    1 Nie znaleziono żadnych nieruchomości END FLOW
+    4 Wprowadzone dane są niepoprawne GOTO 3
+    4 Termin odstąpienia od wynajmu minął END FLOW
+
+
+
