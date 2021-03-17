@@ -299,121 +299,7 @@
     <!-- ############################################################# -->
 
 
-    <table border="1">
-        <tbody>
-        <tr>
-            <th>Imie</th>
-            <td style="width: 15cm;">
-                Hubert
-            </td>
-        </tr>
-        <tr>
-            <th>Nazwisko:</th>
-            <td style="width: 15cm;">
-                Kowalczyk
-            </td>
-        </tr>
-        <tr>
-            <th>Grupa</th>
-            <td style="width: 15cm;">
-                3ID11A
-            </td>
-        </tr>
-        <tr>
-            <th>Nazwa:</th>
-            <td style="width: 15cm;">
-                Dodaj opinię
-            </td>
-        </tr>
-        <tr>
-            <th>Warunki początkowe:</th>
-            <td style="width: 15cm;">
-                <ul>
-                    <li>
-                        Użytkownik musi być zalogowany w systemie.
-                    </li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <th>Warunek końcowy:</th>
-            <td style="width: 15cm;">
-                <ul>
-                    <li>
-                        Opinia wystawiona
-                    </li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <th>Aktor:</th>
-            <td style="width: 15cm;">
-                <ul>
-                    <li>
-                        Wynajmujący (tenant)
-                    </li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <th>Główny przebieg:</th>
-            <td style="width: 15cm;">
-                <ol>
-                    <li>
-                        System wyświetla polę dodania opinii
-                    </li>
-                    <li>
-                        Użytkownik wybiera wystawienie opinii dla danego właściciela nieruchomości (w przypadku
-                        wynajmującego)
-                    </li>
-                    <li>
-                        Użytkownik podaje swoją opinię
-                    </li>
-                    <li>
-                        System wyświetla opcję edycji opinii
-                    </li>
-                    <li>
-                        System wyświetla podsumowanie opinii po edycji
-                    </li>
-                    <li>
-                        Użytkownik potwierdza i umieszcza opinię
-                    </li>
-                    <li>
-                        System akceptuje dodanie opinii przez klienta
-                    </li>
-                </ol>
-            </td>
-        </tr>
-        <tr>
-            <th>Przebieg alternatywny:</th>
-            <td style="width: 15cm;">
-                <ul>
-                    <li>
-                        <span class="number">2</span>
-                        <span class="condition">Brak właściciela nieruchomości</span>
-                        <span class="reaction-additional"></span>
-                        <span class="reaction-type">END FLOW</span>
-                        <span class="reaction-goto"></span>
-                    </li>
-                    <li>
-                        <span class="number">3</span>
-                        <span class="condition">Pole opinii jest puste </span>
-                        <span class="reaction-additional"></span>
-                        <span class="reaction-type">GOTO</span>
-                        <span class="reaction-goto">2</span>
-                    </li>
-                    <li>
-                        <span class="number">6</span>
-                        <span class="condition">Użytkownik anulował operację dodawania opinii</span>
-                        <span class="reaction-additional"></span>
-                        <span class="reaction-type">END FLOW</span>
-                        <span class="reaction-goto"></span>
-                    </li>
-                </ul>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+
     <br><br>
 
     <table border="1">
@@ -489,7 +375,7 @@
                         System sprawdza poprawność wprowadzonych danych
                     </li>
                     <li>
-                        System nawiązuje sesję z danym serwisem bankowym i oczekuje potwierdzenia płatności
+                        System nawiązuje sesję z danym serwisem bankowym i oczekuje potwierdzenia płatności zarówno na dany okres jak i kaucję
                     </li>
                     <li>
                         System wyświetla podsumowanie wprowadzonych danych i finalizuję transakcję
@@ -506,6 +392,20 @@
                         <span class="condition">Nie znaleziono żadnych nieruchomości</span>
                         <span class="reaction-additional"></span>
                         <span class="reaction-type">NONE</span>
+                        <span class="reaction-goto"></span>
+                    </li>
+                    <li>
+                        <span class="number">3</span>
+                        <span class="condition">Użytkownik może wybrać opcje wyremontowania mieszkania i otrzymania zwolnienia z opłaty na dany okres</span>
+                        <span class="reaction-additional"></span>
+                        <span class="reaction-type">CONTINUE FLOW</span>
+                        <span class="reaction-goto"></span>
+                    </li>
+                    <li>
+                        <span class="number">3</span>
+                        <span class="condition">Użytkownik o dużej liczbie negatywnych opinii musi zaczekać na akceptację ze strony właściciela nieruchomości</span>
+                        <span class="reaction-additional"></span>
+                        <span class="reaction-type">HOLD FLOW</span>
                         <span class="reaction-goto"></span>
                     </li>
                     <li>
@@ -600,10 +500,10 @@
                         Użytkownik wypełnia formularz
                     </li>
                     <li>
-                        System sprawdza poprawność wprowadzonych danych
+                        System sprawdza poprawność wprowadzonych danych oraz oddaje pieniądze za kaucję.
                     </li>
                     <li>
-                        System usuwa dany apartament z panelu klienta i finalizuje proces
+                        System usuwa dany apartament z panelu klienta i finalizuje proces.
                     </li>
                 </ol>
             </td>
@@ -612,6 +512,13 @@
             <th>Przebieg alternatywny:</th>
             <td style="width: 15cm;">
                 <ul>
+                    <li>
+                        <span class="number">4</span>
+                        <span class="condition">Użytkownikowi nie przysługuje kaucja z danych przyczyn (np. zniszczenia itp)</span>
+                        <span class="reaction-additional"></span>
+                        <span class="reaction-type">Wyświetl komunikat i stosownie do akceptacji ze strony wynajmującego</span>
+                        <span class="reaction-goto">HOLD FLOW OR CONTINUE FLOW</span>
+                    </li>
                     <li>
                         <span class="number">1</span>
                         <span class="condition">Nie znaleziono żadnych nieruchomości</span>
@@ -639,6 +546,128 @@
         </tbody>
     </table>
     <br><br>
+    <table border="1">
+        <tbody>
+        <tr>
+            <th>Imie</th>
+            <td style="width: 15cm;">
+                Hubert
+            </td>
+        </tr>
+        <tr>
+            <th>Nazwisko:</th>
+            <td style="width: 15cm;">
+                Kowalczyk
+            </td>
+        </tr>
+        <tr>
+            <th>Grupa</th>
+            <td style="width: 15cm;">
+                3ID11A
+            </td>
+        </tr>
+        <tr>
+            <th>Nazwa:</th>
+            <td style="width: 15cm;">
+                Dodaj opinię
+            </td>
+        </tr>
+        <tr>
+            <th>Warunki początkowe:</th>
+            <td style="width: 15cm;">
+                <ul>
+                    <li>
+                        Użytkownik musi być zalogowany w systemie.
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <th>Warunek końcowy:</th>
+            <td style="width: 15cm;">
+                <ul>
+                    <li>
+                        Opinia wystawiona
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <th>Aktor:</th>
+            <td style="width: 15cm;">
+                <ul>
+                    <li>
+                        Wynajmujący (tenant)
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <th>Główny przebieg:</th>
+            <td style="width: 15cm;">
+                <ol>
+                    <li>
+                        System wyświetla polę dodania opinii
+                    </li>
+                    <li>
+                        Użytkownik wybiera wystawienie opinii dla danego właściciela nieruchomości (w przypadku
+                        wynajmującego) lub dla wynajmującego
+                    </li>
+                    <li>
+                        Użytkownik podaje swoją opinię
+                    </li>
+                    <li>
+                        System wyświetla opcję edycji opinii
+                    </li>
+                    <li>
+                        System wyświetla podsumowanie opinii po edycji
+                    </li>
+                    <li>
+                        Użytkownik potwierdza i umieszcza opinię
+                    </li>
+                    <li>
+                        System akceptuje dodanie opinii przez klienta
+                    </li>
+                </ol>
+            </td>
+        </tr>
+        <tr>
+            <th>Przebieg alternatywny:</th>
+            <td style="width: 15cm;">
+                <ul>
+                    <li>
+                        <span class="number">2</span>
+                        <span class="condition">Użytkownik nie wynajmował żadnego mieszkania u danego właściciela nieruchomości lub nie kwaterował danego wynajmującego</span>
+                        <span class="reaction-additional"></span>
+                        <span class="reaction-type">REPEAT FLOW</span>
+                        <span class="reaction-goto">2</span>
+                    </li>
+                    <li>
+                        <span class="number">2</span>
+                        <span class="condition">Brak właściciela nieruchomości</span>
+                        <span class="reaction-additional"></span>
+                        <span class="reaction-type">END FLOW</span>
+                        <span class="reaction-goto"></span>
+                    </li>
+                    <li>
+                        <span class="number">3</span>
+                        <span class="condition">Pole opinii jest puste </span>
+                        <span class="reaction-additional"></span>
+                        <span class="reaction-type">GOTO</span>
+                        <span class="reaction-goto">2</span>
+                    </li>
+                    <li>
+                        <span class="number">6</span>
+                        <span class="condition">Użytkownik anulował operację dodawania opinii</span>
+                        <span class="reaction-additional"></span>
+                        <span class="reaction-type">END FLOW</span>
+                        <span class="reaction-goto"></span>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </article>
 </body>
 </html>
