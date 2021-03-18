@@ -21,6 +21,8 @@ CREATE TABLE apartments
 CREATE table users
 (
     id           int primary key auto_increment,
+    name         varchar(100) not null,
+    lastName     varchar(100) not null,
     email        varchar(100) not null,
     login        varchar(100) not null,
     tenant_id    int          null,
