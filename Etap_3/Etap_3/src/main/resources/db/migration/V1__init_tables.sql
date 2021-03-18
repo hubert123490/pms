@@ -22,7 +22,7 @@ CREATE TABLE landlords
 create table opinions
 (
     id int primary key auto_increment,
-    text clob not null ,
+    text varchar(100) not null ,
     tenant_id int not null ,
     landlord_id int not null,
     foreign key (tenant_id) references tenants (id),
@@ -35,7 +35,7 @@ CREATE TABLE apartments
     name    varchar(100) not null,
     address varchar(100) not null,
     street  varchar(100) not null,
-    postcode    varchar(100) not null,
+    postcode    int not null,
     city    varchar(100) not null,
     country varchar(100) not null,
     room_number int null,
@@ -75,9 +75,9 @@ CREATE table users
     foreign key (landlord_id) references landlords (id)
 );
 
-CREATE table rentalHistory
+CREATE table rental_history
 (
     id  int primary key auto_increment,
     rents_id int,
     foreign key (rents_id) references rents (id)
-)
+);
