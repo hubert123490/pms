@@ -1,7 +1,10 @@
-/*DROP TABLE if exists apartments;
 DROP TABLE if exists tenants;
+DROP TABLE if exists opinions;
 DROP TABLE if exists land_lords;
-DROP TABLE if exists users;*/
+DROP TABLE if exists apartment;
+DROP TABLE if exists rents;
+DROP TABLE if exists users;
+DROP TABLE if exists rental_history;
 
 CREATE TABLE tenants
 (
@@ -47,7 +50,9 @@ CREATE TABLE apartments
     price double not null,
     parking BIT not null,
     wi_fi BIT not null,
-    photo varchar(100) not null
+    photo varchar(100) not null,
+    landlord_id int not null,
+    foreign key (landlord_id) references landlords (id)
 );
 
 create table rents
@@ -78,6 +83,6 @@ CREATE table users
 CREATE table rental_history
 (
     id  int primary key auto_increment,
-    rents_id int,
+    rents_id int not null ,
     foreign key (rents_id) references rents (id)
 );

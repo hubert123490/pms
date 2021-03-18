@@ -2,10 +2,7 @@ package com.pai.pms.model;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -17,4 +14,10 @@ public class Opinion {
     private int id;
     @NotBlank
     private String text;
+    @JoinColumn(name = "tenant_id")
+    @ManyToOne
+    private Tenant tenant;
+    @JoinColumn(name = "landlord_id")
+    @ManyToOne
+    private Landlord landlord;
 }

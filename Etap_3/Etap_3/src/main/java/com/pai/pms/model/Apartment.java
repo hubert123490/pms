@@ -1,16 +1,13 @@
 package com.pai.pms.model;
-import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 @Table(name = "apartments")
-public class Apartments {
+public class Apartment {
     @Id
     @GeneratedValue(generator = "inc")
     @GenericGenerator(name = "inc", strategy = "increment")
@@ -31,5 +28,12 @@ public class Apartments {
     private boolean parking;
     private boolean wiFi;
     private String photo;
+
+    @JoinColumn(name = "landlord_id")
+    @ManyToOne
+    private Landlord landlord;
+    @OneToOne(mappedBy = "apartment")
+    private Rent rent;
+
 
 }

@@ -2,10 +2,7 @@ package com.pai.pms.model;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 
@@ -20,4 +17,13 @@ public class Rent {
     private LocalDate dateFrom;
     @NotBlank
     private LocalDate dateTo;
+    @JoinColumn(name = "tenant_id")
+    @OneToOne
+    private Tenant tenant;
+    @JoinColumn(name = "apartment_id")
+    @OneToOne
+    private Apartment apartment;
+    @OneToOne(mappedBy = "rent")
+    private RentalHistory rentalHistory;
+
 }

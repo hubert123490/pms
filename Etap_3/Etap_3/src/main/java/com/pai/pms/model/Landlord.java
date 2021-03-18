@@ -2,10 +2,8 @@ package com.pai.pms.model;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "landlords")
@@ -14,4 +12,11 @@ public class Landlord {
     @GeneratedValue(generator = "inc")
     @GenericGenerator(name = "inc", strategy = "increment")
     private int id;
+    @OneToOne(mappedBy = "landlord")
+    private User user;
+    @OneToMany(mappedBy = "landlord")
+    private Set<Opinion> opinions;
+    @OneToMany(mappedBy = "landlord")
+    private Set<Apartment> apartments;
+
 }

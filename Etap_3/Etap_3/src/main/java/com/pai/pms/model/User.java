@@ -23,8 +23,10 @@ public class User {
     @NotBlank
     private String login;
     @OneToOne
+    @JoinColumn(name = "tenant_id")
     private Tenant tenant;
     @OneToOne
+    @JoinColumn(name = "landlord_id")
     private Landlord landlord;
 
 
