@@ -17,13 +17,14 @@ public class Rent {
     private LocalDate dateFrom;
     @NotBlank
     private LocalDate dateTo;
+    @NotBlank
+    private double monthlyFee;
     @JoinColumn(name = "tenant_id")
     @OneToOne
     private Tenant tenant;
     @JoinColumn(name = "apartment_id")
     @OneToOne
     private Apartment apartment;
-    @OneToOne(mappedBy = "rent")
-    private RentalHistory rentalHistory;
+
 
 }
