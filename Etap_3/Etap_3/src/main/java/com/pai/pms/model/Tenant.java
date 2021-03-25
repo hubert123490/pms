@@ -11,8 +11,13 @@ public class Tenant {
     @GeneratedValue(generator = "inc")
     @GenericGenerator(name = "inc", strategy = "increment")
     private int id;
-    @OneToOne(mappedBy = "tenant")
+
+
+    @OneToOne
+    @JoinColumn(name = "user_id")
     private User user;
+
+
     @OneToMany(mappedBy = "tenant")
     private Set<Opinion> opinions;
     @OneToOne(mappedBy = "tenant")

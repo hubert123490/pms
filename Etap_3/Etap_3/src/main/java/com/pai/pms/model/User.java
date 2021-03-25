@@ -22,11 +22,12 @@ public class User {
     private String email;
     @NotBlank
     private String login;
-    @OneToOne
-    @JoinColumn(name = "tenant_id")
+
+
+    @OneToOne(mappedBy = "user")
     private Tenant tenant;
-    @OneToOne
-    @JoinColumn(name = "landlord_id")
+
+    @OneToOne(mappedBy = "user")
     private Landlord landlord;
 
 
