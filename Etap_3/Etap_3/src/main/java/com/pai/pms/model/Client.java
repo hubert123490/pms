@@ -5,8 +5,8 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "tenants")
-public class Tenant {
+@Table(name = "clients")
+public class Client {
     @Id
     @GeneratedValue(generator = "inc")
     @GenericGenerator(name = "inc", strategy = "increment")
@@ -18,11 +18,11 @@ public class Tenant {
     private User user;
 
 
-    @OneToMany(mappedBy = "tenant")
+    @OneToMany(mappedBy = "client")
     private Set<Opinion> opinions;
-    @OneToOne(mappedBy = "tenant")
+    @OneToOne(mappedBy = "client")
     private Rent rent;
 
-    @OneToOne(mappedBy = "tenant")
+    @OneToOne(mappedBy = "client")
     private Agreement agreement;
 }

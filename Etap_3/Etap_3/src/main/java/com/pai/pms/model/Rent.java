@@ -19,9 +19,9 @@ public class Rent {
     private LocalDate dateTo;
     @NotBlank
     private double monthlyFee;
-    @JoinColumn(name = "tenant_id")
+    @JoinColumn(name = "client_id")
     @OneToOne
-    private Tenant tenant;
+    private Client client;
     @JoinColumn(name = "apartment_id")
     @OneToOne
     private Apartment apartment;

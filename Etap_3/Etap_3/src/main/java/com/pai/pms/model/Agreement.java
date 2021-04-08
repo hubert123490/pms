@@ -14,9 +14,9 @@ public class Agreement {
     private int id;
     private double discount;
     private double deposit;
-    @JoinColumn(name = "tenant_id")
+    @JoinColumn(name = "client_id")
     @OneToOne
-    private Tenant tenant;
+    private Client client;
     @JoinColumn(name = "landlord_id")
     @OneToOne
     private Landlord landlord;

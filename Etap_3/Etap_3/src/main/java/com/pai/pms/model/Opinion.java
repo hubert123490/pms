@@ -14,9 +14,9 @@ public class Opinion {
     private int id;
     @NotBlank
     private String text;
-    @JoinColumn(name = "tenant_id")
+    @JoinColumn(name = "client_id")
     @ManyToOne
-    private Tenant tenant;
+    private Client client;
     @JoinColumn(name = "landlord_id")
     @ManyToOne
     private Landlord landlord;

@@ -1,8 +1,6 @@
 package com.pai.pms.model;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -25,7 +23,7 @@ public class User {
 
 
     @OneToOne(mappedBy = "user")
-    private Tenant tenant;
+    private Client client;
 
     @OneToOne(mappedBy = "user")
     private Landlord landlord;
