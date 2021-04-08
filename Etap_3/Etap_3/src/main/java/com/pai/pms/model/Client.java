@@ -20,8 +20,6 @@ public class Client {
 
     @OneToMany(mappedBy = "client")
     private Set<Opinion> opinions;
-    @OneToOne(mappedBy = "client")
-    private Rent rent;
 
     @OneToOne(mappedBy = "client")
     private Agreement agreement;

@@ -13,11 +13,6 @@ public class Apartment {
     @GenericGenerator(name = "inc", strategy = "increment")
     private int id;
     private String name;
-    private String address;
-    private String street;
-    private int postcode;
-    private String city;
-    private String country;
     private int roomNumber;
     private int sleepingPlaces;
     private int flatArea;
@@ -29,11 +24,16 @@ public class Apartment {
     private boolean wiFi;
     private String photo;
 
+    @JoinColumn(name = "address_id")
+    @OneToOne
+    private Address address;
     @JoinColumn(name = "landlord_id")
     @ManyToOne
     private Landlord landlord;
     @OneToOne(mappedBy = "apartment")
-    private Rent rent;
-
+    private Agreement agreement;
+    @JoinColumn(name = "additional_field_id")
+    @OneToOne
+    private AdditionalFields additionalFields;
 
 }

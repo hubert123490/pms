@@ -3,18 +3,14 @@ package com.pai.pms.model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 
 @Entity
-@Table(name = "payments")
-public class Payment {
+@Table(name = "additional_fields")
+public class AdditionalFields {
     @Id
     @GeneratedValue(generator = "inc")
     @GenericGenerator(name = "inc", strategy = "increment")
     private int id;
-    private LocalDate date;
-    private double fee;
-    @JoinColumn(name = "agreement_id")
-    @OneToOne
-    private Agreement agreement;
+    @OneToOne(mappedBy = "additionalFields")
+    private Apartment apartment;
 }
