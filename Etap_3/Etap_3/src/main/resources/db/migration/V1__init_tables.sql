@@ -1,5 +1,5 @@
 DROP TABLE if exists users;
-DROP TABLE if exists tenants;
+DROP TABLE if exists clients;
 DROP TABLE if exists opinions;
 DROP TABLE if exists land_lords;
 DROP TABLE if exists apartment;
@@ -17,7 +17,7 @@ CREATE table users
     login    varchar(100) not null
 );
 
-CREATE TABLE tenants
+CREATE TABLE clients
 (
     id              int primary key auto_increment,
     user_id         int not null,
@@ -43,9 +43,9 @@ create table opinions
 (
     id          int primary key auto_increment,
     text        varchar(100) not null,
-    tenant_id   int          not null,
+    client_id   int          not null,
     landlord_id int          not null,
-    foreign key (tenant_id) references tenants (id),
+    foreign key (client_id) references clients (id),
     foreign key (landlord_id) references landlords (id)
 );
 
@@ -78,9 +78,9 @@ create table rents
     date_from    date   not null,
     date_to      date   not null,
     monthly_fee  double not null,
-    tenant_id    int    not null,
+    client_id    int    not null,
     apartment_id int    not null,
-    foreign key (tenant_id) references tenants (id),
+    foreign key (client_id) references clients (id),
     foreign key (apartment_id) references apartments (id)
 );
 
@@ -89,9 +89,9 @@ create table agreements
     id          int primary key auto_increment,
     discount    double null,
     deposit     double null,
-    tenant_id   int    not null,
+    client_id   int    not null,
     landlord_id int    not null,
-    foreign key (tenant_id) references tenants (id),
+    foreign key (client_id) references clients (id),
     foreign key (landlord_id) references landlords (id)
 );
 
@@ -103,6 +103,8 @@ create table payments
     rent_id int    not null,
     foreign key (rent_id) references rents (id)
 );
+
+
 
 
 
