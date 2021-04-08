@@ -26,5 +26,7 @@ public class Rent {
     @OneToOne
     private Apartment apartment;
 
+    @OneToOne(mappedBy = "rent")
+    private Payment payment;
 
 }

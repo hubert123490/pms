@@ -23,4 +23,6 @@ public class Landlord {
     @OneToMany(mappedBy = "landlord")
     private Set<Apartment> apartments;
 
+    @OneToOne(mappedBy = "landlord")
+    private Agreement agreement;
 }

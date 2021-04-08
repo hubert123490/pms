@@ -22,4 +22,7 @@ public class Tenant {
     private Set<Opinion> opinions;
     @OneToOne(mappedBy = "tenant")
     private Rent rent;
+
+    @OneToOne(mappedBy = "tenant")
+    private Agreement agreement;
 }
