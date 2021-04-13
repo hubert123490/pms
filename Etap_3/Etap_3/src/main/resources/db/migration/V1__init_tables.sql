@@ -11,7 +11,7 @@ CREATE table users
 (
     id       int primary key auto_increment,
     name     varchar(100) not null,
-    lastName varchar(100) not null,
+    last_name varchar(100) not null,
     email    varchar(100) not null,
     phone    int          not null,
     login    varchar(100) not null
