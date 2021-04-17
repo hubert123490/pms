@@ -27,6 +27,9 @@ public class Client {
     @OneToOne(mappedBy = "client")
     private Agreement agreement;
 
+    public Client() {
+    }
+
     public int getId() {
         return id;
     }

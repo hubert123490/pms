@@ -1,8 +1,10 @@
 package com.pai.pms.model;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "addresses")
@@ -10,20 +12,47 @@ public class Address {
     @Id
     @GeneratedValue(generator = "inc")
     @GenericGenerator(name = "inc", strategy = "increment")
-    private int number;
+    private int id;
+    private int apartmentNumber;
+    @Column(name = "apartmentBuilding", nullable = false)
+    @Range(min = 1, message= "Address's number of the building must not be empty")
+    private int apartmentBuilding;
+    @NotBlank(message = "Address's street must not be empty")
     private String street;
+    @NotBlank(message = "Address's postcode must not be empty")
     private String postcode;
+    @NotBlank(message = "Address's city must not be empty")
     private String city;
+    @NotBlank(message = "Address's country must not be empty")
     private String country;
     @OneToOne(mappedBy = "address")
     private Apartment apartment;
 
-    public int getNumber() {
-        return number;
+    public Address() {
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getApartmentNumber() {
+        return apartmentNumber;
+    }
+
+    public void setApartmentNumber(int apartmentNumber) {
+        this.apartmentNumber = apartmentNumber;
+    }
+
+    public int getApartmentBuilding() {
+        return apartmentBuilding;
+    }
+
+    public void setApartmentBuilding(int apartmentBuilding) {
+        this.apartmentBuilding = apartmentBuilding;
     }
 
     public String getStreet() {

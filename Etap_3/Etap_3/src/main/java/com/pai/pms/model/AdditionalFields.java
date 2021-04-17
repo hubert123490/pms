@@ -18,6 +18,9 @@ public class AdditionalFields {
     @OneToOne(mappedBy = "additionalFields")
     private Apartment apartment;
 
+    public AdditionalFields() {
+    }
+
     public int getId() {
         return id;
     }

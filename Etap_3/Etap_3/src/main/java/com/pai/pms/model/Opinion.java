@@ -21,6 +21,9 @@ public class Opinion {
     @ManyToOne
     private Landlord landlord;
 
+    public Opinion() {
+    }
+
     public int getId() {
         return id;
     }

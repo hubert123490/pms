@@ -34,6 +34,9 @@ public class Agreement {
     @OneToOne(mappedBy = "agreement")
     private Payment payment;
 
+    public Agreement() {
+    }
+
     public int getId() {
         return id;
     }

@@ -14,7 +14,8 @@ CREATE table users
     last_name varchar(100) not null,
     email    varchar(100) not null,
     phone    int          not null,
-    login    varchar(100) not null
+    login    varchar(100) not null,
+    password    varchar(100) not null
 );
 
 CREATE TABLE clients
@@ -29,7 +30,8 @@ CREATE TABLE clients
 create table addresses
 (
     id          int primary key auto_increment,
-    number      int not null,
+    apartment_number int,
+    apartment_building int not null,
     street      varchar(100) not null,
     postcode    varchar(100) not null,
     city        varchar(100) not null,

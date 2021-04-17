@@ -25,6 +25,9 @@ public class Landlord {
     @OneToOne(mappedBy = "landlord")
     private Agreement agreement;
 
+    public Landlord() {
+    }
+
     public int getId() {
         return id;
     }

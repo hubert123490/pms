@@ -1,11 +1,15 @@
 package com.pai.pms.model;
 
+import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @NoArgsConstructor
@@ -16,16 +20,19 @@ public class User {
     @GeneratedValue(generator = "inc")
     @GenericGenerator(name = "inc", strategy = "increment")
     private int id;
-    @NotBlank
+    @NotBlank(message = "User's name must not be empty")
     private String name;
-    @NotBlank
+    @NotBlank(message = "User's last name must not be empty")
     private String lastName;
-    @NotBlank
+    @NotBlank(message = "User's email must not be empty")
     private String email;
-    @NotBlank
+    @Column(name = "phone", nullable = false)
+    @Range(min = 1, message= "User's phone must not be empty")
     private int phone;
-    @NotBlank
+    @NotBlank(message = "User's login must not be empty")
     private String login;
+    @NotBlank(message = "User's password must not be empty")
+    private String password;
 
 
     @OneToOne(mappedBy = "user")
@@ -33,6 +40,7 @@ public class User {
 
     @OneToOne(mappedBy = "user")
     private Landlord landlord;
+
 
     public int getId() {
         return id;
@@ -80,6 +88,14 @@ public class User {
 
     public void setLogin(String login) {
         this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Client getClient() {

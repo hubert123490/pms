@@ -36,6 +36,9 @@ public class Apartment {
     @OneToOne
     private AdditionalFields additionalFields;
 
+    public Apartment() {
+    }
+
     public int getId() {
         return id;
     }

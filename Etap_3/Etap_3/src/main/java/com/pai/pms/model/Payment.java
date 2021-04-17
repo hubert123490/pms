@@ -18,6 +18,9 @@ public class Payment {
     @OneToOne
     private Agreement agreement;
 
+    public Payment() {
+    }
+
     public int getId() {
         return id;
     }
