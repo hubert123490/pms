@@ -1,31 +1,33 @@
-package com.pai.pms.model;
-
+package com.pai.pms.model.entities;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.Set;
 
 @Entity
-@Table(name = "landlords")
-public class Landlord {
+@Table(name = "clients")
+public class Client {
     @Id
     @GeneratedValue(generator = "inc")
     @GenericGenerator(name = "inc", strategy = "increment")
     private int id;
-    private int idCard;
+    @NotBlank
+    private int amountOfRents;
+    @NotBlank
+    private String occupation;
     @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany(mappedBy = "landlord")
-    private Set<Opinion> opinions;
-    @OneToMany(mappedBy = "landlord")
-    private Set<Apartment> apartments;
 
-    @OneToOne(mappedBy = "landlord")
+    @OneToMany(mappedBy = "client")
+    private Set<Opinion> opinions;
+
+    @OneToOne(mappedBy = "client")
     private Agreement agreement;
 
-    public Landlord() {
+    public Client() {
     }
 
     public int getId() {
@@ -36,12 +38,20 @@ public class Landlord {
         this.id = id;
     }
 
-    public int getIdCard() {
-        return idCard;
+    public int getAmountOfRents() {
+        return amountOfRents;
     }
 
-    public void setIdCard(int idCard) {
-        this.idCard = idCard;
+    public void setAmountOfRents(int amountOfRents) {
+        this.amountOfRents = amountOfRents;
+    }
+
+    public String getOccupation() {
+        return occupation;
+    }
+
+    public void setOccupation(String occupation) {
+        this.occupation = occupation;
     }
 
     public User getUser() {
@@ -58,14 +68,6 @@ public class Landlord {
 
     public void setOpinions(Set<Opinion> opinions) {
         this.opinions = opinions;
-    }
-
-    public Set<Apartment> getApartments() {
-        return apartments;
-    }
-
-    public void setApartments(Set<Apartment> apartments) {
-        this.apartments = apartments;
     }
 
     public Agreement getAgreement() {

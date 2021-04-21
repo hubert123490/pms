@@ -1,4 +1,4 @@
-package com.pai.pms.model;
+package com.pai.pms.model.entities;
 
 import org.hibernate.annotations.GenericGenerator;
 

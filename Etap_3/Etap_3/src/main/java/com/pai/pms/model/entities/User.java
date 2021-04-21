@@ -1,19 +1,15 @@
-package com.pai.pms.model;
+package com.pai.pms.model.entities;
 
-import com.sun.istack.NotNull;
-import lombok.AllArgsConstructor;
+
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 
 @Entity
 @NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "users")
 public class User {
     @Id

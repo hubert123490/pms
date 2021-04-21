@@ -1,4 +1,4 @@
-package com.pai.pms.model;
+package com.pai.pms.model.entities;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "additional_fields")
-public class AdditionalFields {
+public class AdditionalField {
     @Id
     @GeneratedValue(generator = "inc")
     @GenericGenerator(name = "inc", strategy = "increment")
@@ -15,10 +15,10 @@ public class AdditionalFields {
     private boolean animals_permission;
     private boolean parking_available;
     private boolean balcony_available;
-    @OneToOne(mappedBy = "additionalFields")
+    @OneToOne(mappedBy = "additionalField")
     private Apartment apartment;
 
-    public AdditionalFields() {
+    public AdditionalField() {
     }
 
     public int getId() {

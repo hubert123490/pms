@@ -1,9 +1,8 @@
-package com.pai.pms.model;
+package com.pai.pms.model.entities;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Set;
 
 @Entity
 @Table(name = "apartments")
@@ -34,7 +33,7 @@ public class Apartment {
     private Agreement agreement;
     @JoinColumn(name = "additional_field_id")
     @OneToOne
-    private AdditionalFields additionalFields;
+    private AdditionalField additionalField;
 
     public Apartment() {
     }
@@ -159,11 +158,11 @@ public class Apartment {
         this.agreement = agreement;
     }
 
-    public AdditionalFields getAdditionalFields() {
-        return additionalFields;
+    public AdditionalField getAdditionalField() {
+        return additionalField;
     }
 
-    public void setAdditionalFields(AdditionalFields additionalFields) {
-        this.additionalFields = additionalFields;
+    public void setAdditionalField(AdditionalField additionalField) {
+        this.additionalField = additionalField;
     }
 }
