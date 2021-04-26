@@ -10,10 +10,10 @@ DROP TABLE if exists payments;
 CREATE table users
 (
     id        int primary key auto_increment,
-    name      varchar(100) not null,
-    last_name varchar(100) not null,
+    name      varchar(100) ,
+    last_name varchar(100) ,
     email     varchar(100) not null,
-    phone     int          not null,
+    phone     int          ,
     login     varchar(100) not null,
     password  varchar(100) not null
 );
@@ -113,6 +113,7 @@ create table payments
     agreement_id int    not null,
     foreign key (agreement_id) references agreements (id)
 );
+
 
 
 

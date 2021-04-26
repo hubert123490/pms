@@ -3,7 +3,6 @@ package com.pai.pms.logic.service;
 import com.pai.pms.model.dto.ApartmentReadModel;
 import com.pai.pms.model.entities.Apartment;
 import com.pai.pms.model.repository.ApartmentRepository;
-import org.apache.tomcat.jni.Local;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -11,7 +10,6 @@ import java.time.LocalDate;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -47,21 +45,17 @@ class ApartmentServiceTest {
         Apartment apartment1 = initApartmentDates(LocalDate.of(2021, 3, 1), LocalDate.of(2021, 6, 22));
         Apartment apartment2 = initApartmentDates(LocalDate.of(2021, 4, 22), LocalDate.of(2021, 8, 10));
 
-        when(mockRepository.findAllByDateFromGreaterThanAndDateToLessThan(any(), any())).thenReturn(List.of(apartment1, apartment2));
+        when(mockRepository.findAllByDateFromGreaterThanAndDateToLessThan(from, to)).thenReturn(List.of(apartment2));
 
         //SUT
         ApartmentService SUT = new ApartmentService(mockRepository);
 
         //when
-
-        System.out.println(from);
-        System.out.println(to);
         List<ApartmentReadModel> result = SUT.readAllInCertainTimePeriod(from, to);
         List<ApartmentReadModel> expected = List.of(new ApartmentReadModel(apartment2));
 
         //then
-        System.out.println(result);
-        System.out.println(expected);
+        assertThat(result).isEqualTo(expected);
     }
 
 

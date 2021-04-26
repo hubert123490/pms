@@ -7,6 +7,8 @@ import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @NoArgsConstructor
@@ -16,20 +18,20 @@ public class User {
     @GeneratedValue(generator = "inc")
     @GenericGenerator(name = "inc", strategy = "increment")
     private int id;
-    @NotBlank(message = "User's name must not be empty")
     private String name;
-    @NotBlank(message = "User's last name must not be empty")
     private String lastName;
     @NotBlank(message = "User's email must not be empty")
     private String email;
-    @Column(name = "phone", nullable = false)
-    @Range(min = 1, message= "User's phone must not be empty")
     private int phone;
     @NotBlank(message = "User's login must not be empty")
     private String login;
     @NotBlank(message = "User's password must not be empty")
     private String password;
-
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(	name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles = new HashSet<>();
 
     @OneToOne(mappedBy = "user")
     private Client client;
@@ -37,6 +39,11 @@ public class User {
     @OneToOne(mappedBy = "user")
     private Landlord landlord;
 
+    public User(String username, String email, String password) {
+        this.login = username;
+        this.email = email;
+        this.password = password;
+    }
 
     public int getId() {
         return id;
@@ -108,5 +115,13 @@ public class User {
 
     public void setLandlord(Landlord landlord) {
         this.landlord = landlord;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }
