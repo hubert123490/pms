@@ -36,7 +36,8 @@ class ApartmentServiceTest {
     }
 
     @Test
-    void readAllInCertainTimePeriod() {
+    @DisplayName("should return list of apartments from certain period (from, to)")
+    void readAllInCertainTimePeriod_AllParamsSet() {
         //given
         var mockRepository = mock(ApartmentRepository.class);
         LocalDate from = LocalDate.of(2021, 4, 2);
@@ -57,6 +58,8 @@ class ApartmentServiceTest {
         //then
         assertThat(result).isEqualTo(expected);
     }
+
+
 
 
     private Apartment initApartment(String name, double price, int sleepingPlaces) {
