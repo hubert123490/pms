@@ -21,6 +21,10 @@ CREATE table users
 CREATE TABLE clients
 (
     id              int primary key auto_increment,
+    name_client varchar(100),
+    surname_client varchar(100),
+    email_client varchar (100),
+    age int,
     amount_of_rents int not null,
     occupation      varchar(100),
     user_id         int not null,

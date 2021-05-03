@@ -14,11 +14,9 @@ values (3, 'test name 3', 'test last name 3', 'test email 3', 123456789, 'test l
 
 /*CLIENTS */
 insert into clients
-values (0, 0, 'test occupation 0', 0);
+values (0,'Tomasz','Nowak','tomaszn@test.pl',24, 1, 'test occupation 0', 0);
 insert into clients
-values (1, 1, 'test occupation 1', 1);
-insert into clients
-values (2, 2, 'test occupation 1', 2);
+values (1,'Sylwia','Tentrak','sylwiat@test.pl',34, 5, 'test occupation 1', 1);
 
 /*ADDRESSES */
 insert into addresses
@@ -41,8 +39,6 @@ insert into opinions
 values (0, 'test text 0', 0, 0);
 insert into opinions
 values (1, 'test text 1', 1, 1);
-insert into opinions
-values (2, 'test text 2', 2, 2);
 
 /*ADDITIONAL_FIELDS */
 insert into additional_fields

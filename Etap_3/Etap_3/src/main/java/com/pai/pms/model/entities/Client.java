@@ -3,6 +3,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -12,8 +13,11 @@ public class Client {
     @GeneratedValue(generator = "inc")
     @GenericGenerator(name = "inc", strategy = "increment")
     private int id;
-    @NotBlank
     private int amountOfRents;
+    private String nameClient;
+    private String surnameClient;
+    private String emailClient;
+    private int age;
     @NotBlank
     private String occupation;
     @OneToOne
@@ -22,7 +26,7 @@ public class Client {
 
 
     @OneToMany(mappedBy = "client")
-    private Set<Opinion> opinions;
+    private List<Opinion> opinions;
 
     @OneToOne(mappedBy = "client")
     private Agreement agreement;
@@ -54,27 +58,49 @@ public class Client {
         this.occupation = occupation;
     }
 
-    public User getUser() {
-        return user;
-    }
 
     public void setUser(User user) {
         this.user = user;
     }
 
-    public Set<Opinion> getOpinions() {
-        return opinions;
-    }
 
-    public void setOpinions(Set<Opinion> opinions) {
+    public void setOpinions(List<Opinion> opinions) {
         this.opinions = opinions;
-    }
-
-    public Agreement getAgreement() {
-        return agreement;
     }
 
     public void setAgreement(Agreement agreement) {
         this.agreement = agreement;
+    }
+
+    public String getNameClient() {
+        return nameClient;
+    }
+
+    public void setNameClient(String nameClient) {
+        this.nameClient = nameClient;
+    }
+
+    public String getSurnameClient() {
+        return surnameClient;
+    }
+
+    public void setSurnameClient(String surnameClient) {
+        this.surnameClient = surnameClient;
+    }
+
+    public String getEmailClient() {
+        return emailClient;
+    }
+
+    public void setEmailClient(String emailClient) {
+        this.emailClient = emailClient;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 }
