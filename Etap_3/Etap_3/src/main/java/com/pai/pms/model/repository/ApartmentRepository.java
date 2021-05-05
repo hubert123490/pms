@@ -12,5 +12,7 @@ import java.util.List;
 @Repository
 public interface ApartmentRepository  extends JpaRepository<Apartment,Integer> {
 
-    List<Apartment> findAllByDateFromGreaterThanAndDateToLessThan(@Param("from") LocalDate from, @Param("to") LocalDate to);
+    List<Apartment> findAllByDateFromLessThanAndDateToGreaterThan(LocalDate from, LocalDate to);
+
+    List<Apartment> findAllByName(String name);
 }

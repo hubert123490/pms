@@ -8,11 +8,13 @@ public class ApartmentReadModel {
     private int id;
     private String description;
     private double price;
+    private String city;
 
     public ApartmentReadModel(Apartment apartment) {
         this.id = apartment.getId();
         this.description = makeApartmentDescription(apartment);
         this.price = apartment.getPrice();
+        this.city = apartment.getAddress().getCity();
     }
 
 

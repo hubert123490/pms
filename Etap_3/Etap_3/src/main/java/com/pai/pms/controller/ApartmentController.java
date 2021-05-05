@@ -2,16 +2,14 @@ package com.pai.pms.controller;
 
 import com.pai.pms.logic.service.ApartmentService;
 import com.pai.pms.model.dto.ApartmentReadModel;
-import com.pai.pms.security.services.UserDetailsImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.repository.query.Param;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
@@ -34,9 +32,18 @@ public class ApartmentController {
 
     @GetMapping
     @RequestMapping("/period")
-    ResponseEntity<List<ApartmentReadModel>> readAllApartmentsInTimePeriod(@DateTimeFormat(pattern = "yyyy-MM-dd") @RequestParam("from") LocalDate from,
-                                                                           @DateTimeFormat(pattern = "yyyy-MM-dd") @RequestParam("to") LocalDate to) {
+    ResponseEntity<List<ApartmentReadModel>> readAllApartmentsInTimePeriod(@DateTimeFormat(pattern = "yyyy-MM-dd") @Param("from") LocalDate from,
+                                                                           @DateTimeFormat(pattern = "yyyy-MM-dd") @Param("to") LocalDate to
+                                                                           ) {
         return ResponseEntity.ok(service.readAllInCertainTimePeriod(from, to));
+    }
+
+    @GetMapping
+    @RequestMapping("/apartments/read")
+    ResponseEntity<List<ApartmentReadModel>> readAllApartmentsWithFilters(@DateTimeFormat(pattern = "yyyy-MM-dd") @Param("from") LocalDate from,
+                                                                           @DateTimeFormat(pattern = "yyyy-MM-dd") @Param("to") LocalDate to,
+                                                                           @Param("name") String name) {
+        return ResponseEntity.ok(service.readAllWithFilters(from, to, name));
     }
 
 }

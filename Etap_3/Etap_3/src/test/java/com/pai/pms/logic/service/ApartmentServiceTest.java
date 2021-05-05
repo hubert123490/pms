@@ -46,7 +46,7 @@ class ApartmentServiceTest {
         Apartment apartment1 = initApartmentDates(LocalDate.of(2021, 3, 1), LocalDate.of(2021, 6, 22));
         Apartment apartment2 = initApartmentDates(LocalDate.of(2021, 4, 22), LocalDate.of(2021, 8, 10));
 
-        when(mockRepository.findAllByDateFromGreaterThanAndDateToLessThan(from, to)).thenReturn(List.of(apartment2));
+        when(mockRepository.findAllByDateFromLessThanAndDateToGreaterThan(from, to)).thenReturn(List.of(apartment2));
 
         //SUT
         ApartmentService SUT = new ApartmentService(mockRepository);
