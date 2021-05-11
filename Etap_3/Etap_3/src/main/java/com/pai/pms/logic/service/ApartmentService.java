@@ -33,20 +33,31 @@ public class ApartmentService {
         return repository.findAllByDateFromLessThanAndDateToGreaterThan(from, to).stream().map(ApartmentReadModel::new).collect(Collectors.toList());
     }
 
+    public List<ApartmentReadModel> readAllInCertainTimePeriodAndCity(LocalDate from, LocalDate to, String city){
+        return repository.findAllByDateFromLessThanAndDateToGreaterThanAndAddress_City(from, to, city).stream().map(ApartmentReadModel::new).collect(Collectors.toList());
+    }
+
     public List<ApartmentReadModel> readAllWithFilters(LocalDate from, LocalDate to, String name) {
         if (from == null  && to == null && (name == null || name.equals(""))) {
             logger.info("everything nulls");
             return readAll();
         }
         else {
-            if(name != null && !name.equals("")){
-                logger.info("name not null");
-                return readByCity(name);
+            if (name != null && !name.equals("") && (from != null && to != null)){
+                logger.info("all filters up");
+                return readAllInCertainTimePeriodAndCity(from, to, name);
             }
-            else if (from != null && to != null){
-                logger.info("reading period");
-                return readAllInCertainTimePeriod(from, to);
+            else{
+                if(name != null && !name.equals("")){
+                    logger.info("city not null");
+                    return readByCity(name);
+                }
+                else if (from != null && to != null){
+                    logger.info("reading period");
+                    return readAllInCertainTimePeriod(from, to);
+                }
             }
+
         }
         throw new IllegalStateException();
     }
