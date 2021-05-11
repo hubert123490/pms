@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 
 @Repository
@@ -19,4 +20,6 @@ public interface ApartmentRepository  extends JpaRepository<Apartment,Integer> {
     List<Apartment> findAllByAddress_City(String city);
 
     List<Apartment> findAllByDateFromLessThanAndDateToGreaterThanAndAddress_City(LocalDate from, LocalDate to, String city);
+
+    Optional<Apartment> findById(int id);
 }

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class ApartmentController {
@@ -45,5 +46,6 @@ public class ApartmentController {
                                                                            @Param("name") String name) {
         return ResponseEntity.ok(service.readAllWithFilters(from, to, name));
     }
+
 
 }
