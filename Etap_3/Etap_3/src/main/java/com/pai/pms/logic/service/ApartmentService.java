@@ -25,8 +25,8 @@ public class ApartmentService {
         return repository.findAll().stream().map(ApartmentReadModel::new).collect(Collectors.toList());
     }
 
-    public List<ApartmentReadModel> readByName(String name) {
-        return repository.findAllByName(name).stream().map(ApartmentReadModel::new).collect(Collectors.toList());
+    public List<ApartmentReadModel> readByCity(String name) {
+        return repository.findAllByAddress_City(name).stream().map(ApartmentReadModel::new).collect(Collectors.toList());
     }
 
     public List<ApartmentReadModel> readAllInCertainTimePeriod(LocalDate from, LocalDate to) {
@@ -41,7 +41,7 @@ public class ApartmentService {
         else {
             if(name != null && !name.equals("")){
                 logger.info("name not null");
-                return readByName(name);
+                return readByCity(name);
             }
             else if (from != null && to != null){
                 logger.info("reading period");
