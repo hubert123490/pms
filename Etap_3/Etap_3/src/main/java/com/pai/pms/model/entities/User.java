@@ -43,10 +43,12 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Opinion> opinions;
 
-    public User(String username, String email, String password) {
+    public User(String username, String email, String password, String firstName, String lastName) {
         this.login = username;
         this.email = email;
         this.password = password;
+        this.name = firstName;
+        this.lastName = lastName;
     }
 
     public int getId() {
