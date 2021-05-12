@@ -1,11 +1,13 @@
 package com.pai.pms.model.dto;
 
 import com.pai.pms.model.entities.Apartment;
+import com.pai.pms.model.entities.Opinion;
 import lombok.Data;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Data
 public class ApartmentDetailReadModel {
@@ -22,6 +24,7 @@ public class ApartmentDetailReadModel {
     private List<String> additionalFields;
     private int contact;
     private double price;
+    private List<OpinionReadModel> opinionReadModel;
 
 
     public ApartmentDetailReadModel(Apartment apartment) {
@@ -38,6 +41,7 @@ public class ApartmentDetailReadModel {
         this.additionalFields = additionalFieldsDescription(apartment);
         this.contact = apartment.getLandlord().getUser().getPhone();
         this.price = apartment.getPrice();
+        this.opinionReadModel = getAllOpinionsFromApartment(apartment);
 
     }
 
@@ -68,5 +72,11 @@ public class ApartmentDetailReadModel {
         }
 
         return result;
+    }
+
+    private List<OpinionReadModel> getAllOpinionsFromApartment(Apartment apartment){
+        return apartment.getOpinions().stream().filter(opinion -> {
+            return opinion.getApartment() != null;
+        }).map(OpinionReadModel::new).collect(Collectors.toList());
     }
 }

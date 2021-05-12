@@ -1,9 +1,10 @@
 DROP TABLE if exists users;
 DROP TABLE if exists clients;
 DROP TABLE if exists addresses;
-DROP TABLE if exists land_lords;
-DROP TABLE if exists opinions;
+DROP TABLE if exists landlords;
+DROP TABLE if exists additional_fields;
 DROP TABLE if exists apartment;
+DROP TABLE if exists opinions;
 DROP TABLE if exists agreements;
 DROP TABLE if exists payments;
 
@@ -51,17 +52,6 @@ CREATE TABLE landlords
     foreign key (user_id) references users (id),
     foreign key (address_id) references addresses (id)
 );
-
-create table opinions
-(
-    id          int primary key auto_increment,
-    text        varchar(100) not null,
-    client_id   int          not null,
-    landlord_id int          not null,
-    foreign key (client_id) references clients (id),
-    foreign key (landlord_id) references landlords (id)
-);
-
 create table additional_fields
 (
     id                 int primary key auto_increment,
@@ -91,6 +81,20 @@ CREATE TABLE apartments
     foreign key (landlord_id) references landlords (id),
     foreign key (address_id) references addresses (id),
     foreign key (additional_field_id) references additional_fields (id)
+);
+
+create table opinions
+(
+    id          int primary key auto_increment,
+    text        varchar(100) not null,
+    client_id   int,
+    landlord_id int,
+    apartment_id int,
+    user_id int,
+    foreign key (apartment_id) references apartments (id),
+    foreign key (client_id) references clients (id),
+    foreign key (landlord_id) references landlords (id),
+    foreign key (user_id) references users (id)
 );
 
 create table agreements

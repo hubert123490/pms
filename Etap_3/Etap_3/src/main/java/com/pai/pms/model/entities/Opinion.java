@@ -20,6 +20,12 @@ public class Opinion {
     @JoinColumn(name = "landlord_id")
     @ManyToOne
     private Landlord landlord;
+    @JoinColumn(name = "apartment_id")
+    @ManyToOne
+    private Apartment apartment;
+    @JoinColumn(name = "user_id")
+    @ManyToOne
+    private User user;
 
     public Opinion() {
     }
@@ -54,5 +60,21 @@ public class Opinion {
 
     public void setLandlord(Landlord landlord) {
         this.landlord = landlord;
+    }
+
+    public Apartment getApartment() {
+        return apartment;
+    }
+
+    public void setApartment(Apartment apartment) {
+        this.apartment = apartment;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

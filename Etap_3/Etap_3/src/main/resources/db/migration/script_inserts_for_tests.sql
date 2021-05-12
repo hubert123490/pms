@@ -34,12 +34,6 @@ values (1, 1, 1, 1);
 insert into landlords
 values (2, 2, 2, 2);
 
-/*OPINIONS */
-insert into opinions
-values (0, 'test text 0', 0, 0);
-insert into opinions
-values (1, 'test text 1', 1, 1);
-
 /*ADDITIONAL_FIELDS */
 insert into additional_fields
 values (0, 0, 0, 0, 0);
@@ -53,5 +47,13 @@ insert into APARTMENTS
 values (0, 'test name 0', 0, 2, 20, 1, DATE '2021-01-22', DATE '2021-05-11', 200, 1, 1, 'test photo 0', 0, 0, 0);
 insert into APARTMENTS
 values (1, 'test name 1', 1, 2, 30, 1, DATE '2021-03-11', DATE '2021-08-11', 150, 0, 1, 'test photo 0', 1, 1, 1);
+
+/*OPINIONS */
+insert into opinions
+values (0, 'test text 0', 0, 0, 0, 0);
+insert into opinions
+values (1, 'test text 1', 1, 1, 0, 1);
+
+
 
 

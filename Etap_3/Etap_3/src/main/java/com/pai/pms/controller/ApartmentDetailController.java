@@ -23,6 +23,7 @@ public class ApartmentDetailController {
     @RequestMapping("/apartments/read/{id}")
     ResponseEntity<ApartmentDetailReadModel> readApartmentDetails(@PathVariable int id){
         try {
+            logger.info("reading apartment with id: " + id);
             return ResponseEntity.ok(service.readApartmentDetails(id));
         }catch (NullPointerException e){
             return ResponseEntity.notFound().build();

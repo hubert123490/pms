@@ -8,6 +8,7 @@ import org.hibernate.validator.constraints.Range;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -38,6 +39,9 @@ public class User {
 
     @OneToOne(mappedBy = "user")
     private Landlord landlord;
+
+    @OneToMany(mappedBy = "user")
+    private List<Opinion> opinions;
 
     public User(String username, String email, String password) {
         this.login = username;
@@ -123,5 +127,13 @@ public class User {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public List<Opinion> getOpinions() {
+        return opinions;
+    }
+
+    public void setOpinions(List<Opinion> opinions) {
+        this.opinions = opinions;
     }
 }

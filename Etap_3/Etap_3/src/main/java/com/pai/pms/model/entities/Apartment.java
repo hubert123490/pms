@@ -3,6 +3,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "apartments")
@@ -34,6 +35,9 @@ public class Apartment {
     @JoinColumn(name = "additional_field_id")
     @OneToOne
     private AdditionalField additionalField;
+
+    @OneToMany(mappedBy = "apartment")
+    private List<Opinion> opinions;
 
     public Apartment() {
     }
@@ -164,5 +168,13 @@ public class Apartment {
 
     public void setAdditionalField(AdditionalField additionalField) {
         this.additionalField = additionalField;
+    }
+
+    public List<Opinion> getOpinions() {
+        return opinions;
+    }
+
+    public void setOpinions(List<Opinion> opinions) {
+        this.opinions = opinions;
     }
 }
