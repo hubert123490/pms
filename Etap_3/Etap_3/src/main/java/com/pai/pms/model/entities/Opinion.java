@@ -4,6 +4,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "opinions")
@@ -14,6 +15,8 @@ public class Opinion {
     private int id;
     @NotBlank
     private String text;
+    @NotBlank
+    private LocalDate publishedDate;
     @JoinColumn(name = "client_id")
     @ManyToOne
     private Client client;
@@ -76,5 +79,13 @@ public class Opinion {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public LocalDate getPublishedDate() {
+        return publishedDate;
+    }
+
+    public void setPublishedDate(LocalDate publishedDate) {
+        this.publishedDate = publishedDate;
     }
 }

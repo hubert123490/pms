@@ -11,10 +11,10 @@ DROP TABLE if exists payments;
 CREATE table users
 (
     id        int primary key auto_increment,
-    name      varchar(100) ,
-    last_name varchar(100) ,
+    name      varchar(100),
+    last_name varchar(100),
     email     varchar(100) not null,
-    phone     int          ,
+    phone     int,
     login     varchar(100) not null,
     password  varchar(100) not null
 );
@@ -22,10 +22,7 @@ CREATE table users
 CREATE TABLE clients
 (
     id              int primary key auto_increment,
-    name_client varchar(100),
-    surname_client varchar(100),
-    email_client varchar (100),
-    age int,
+    age             int,
     amount_of_rents int not null,
     occupation      varchar(100),
     user_id         int not null,
@@ -85,12 +82,13 @@ CREATE TABLE apartments
 
 create table opinions
 (
-    id          int primary key auto_increment,
-    text        varchar(100) not null,
-    client_id   int,
-    landlord_id int,
-    apartment_id int,
-    user_id int,
+    id             int primary key auto_increment,
+    text           varchar(100) not null,
+    published_date DATE         not null,
+    client_id      int,
+    landlord_id    int,
+    apartment_id   int,
+    user_id        int,
     foreign key (apartment_id) references apartments (id),
     foreign key (client_id) references clients (id),
     foreign key (landlord_id) references landlords (id),
@@ -104,7 +102,7 @@ create table agreements
     deposit      double null,
     date_from    date   not null,
     date_to      date   not null,
-    monthly_fee  double not null,
+    daily_fee  double not null,
     client_id    int    not null,
     apartment_id int    not null,
     landlord_id  int    not null,

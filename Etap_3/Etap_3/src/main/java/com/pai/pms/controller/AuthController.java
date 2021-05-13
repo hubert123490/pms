@@ -7,9 +7,11 @@ import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
+import com.pai.pms.model.entities.Client;
 import com.pai.pms.model.entities.Role;
 import com.pai.pms.model.entities.User;
 import com.pai.pms.model.enums.ERole;
+import com.pai.pms.model.repository.ClientRepository;
 import com.pai.pms.model.repository.RoleRepository;
 import com.pai.pms.model.repository.UserRepository;
 import com.pai.pms.payload.request.LoginRequest;
@@ -41,6 +43,9 @@ public class AuthController {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    ClientRepository clientRepository;
 
     @Autowired
     RoleRepository roleRepository;
@@ -90,6 +95,8 @@ public class AuthController {
         User user = new User(signUpRequest.getUsername(),
                 signUpRequest.getEmail(),
                 encoder.encode(signUpRequest.getPassword()), signUpRequest.getFirstName(), signUpRequest.getLastName());
+        // associate User with client
+        Client client = new Client(0, 0, "Not given", user);
 
         Set<String> strRoles = signUpRequest.getRole();
         Set<Role> roles = new HashSet<>();
@@ -124,6 +131,7 @@ public class AuthController {
 
         user.setRoles(roles);
         userRepository.save(user);
+        clientRepository.save(client);
 
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
     }

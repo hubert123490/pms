@@ -22,4 +22,8 @@ public interface ApartmentRepository  extends JpaRepository<Apartment,Integer> {
     List<Apartment> findAllByDateFromLessThanAndDateToGreaterThanAndAddress_City(LocalDate from, LocalDate to, String city);
 
     Optional<Apartment> findById(int id);
+
+    List<Apartment> findAllByDateFromLessThan(LocalDate from);
+
+
 }

@@ -21,6 +21,12 @@ public class Payment {
     public Payment() {
     }
 
+    public Payment(LocalDate date, double fee, Agreement agreement) {
+        this.date = date;
+        this.fee = fee;
+        this.agreement = agreement;
+    }
+
     public int getId() {
         return id;
     }

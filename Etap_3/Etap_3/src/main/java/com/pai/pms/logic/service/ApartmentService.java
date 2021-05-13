@@ -37,6 +37,10 @@ public class ApartmentService {
         return repository.findAllByDateFromLessThanAndDateToGreaterThanAndAddress_City(from, to, city).stream().map(ApartmentReadModel::new).collect(Collectors.toList());
     }
 
+    public List<ApartmentReadModel> readAllFrom(LocalDate from){
+        return repository.findAllByDateFromLessThan(from).stream().map(ApartmentReadModel::new).collect(Collectors.toList());
+    }
+
     public List<ApartmentReadModel> readAllWithFilters(LocalDate from, LocalDate to, String name) {
         if (from == null  && to == null && (name == null || name.equals(""))) {
             logger.info("everything nulls");
@@ -55,6 +59,10 @@ public class ApartmentService {
                 else if (from != null && to != null){
                     logger.info("reading period");
                     return readAllInCertainTimePeriod(from, to);
+                }
+                else if (from != null){
+                    logger.info("reading from");
+                    return readAllFrom(from);
                 }
             }
 

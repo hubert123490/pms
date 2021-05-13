@@ -14,9 +14,10 @@ values (3, 'test name 3', 'test last name 3', 'test email 3', 123456789, 'test l
 
 /*CLIENTS */
 insert into clients
-values (0,'Tomasz','Nowak','tomaszn@test.pl',24, 1, 'test occupation 0', 0);
+values (0, 24, 1, 'test occupation 0', 0);
 insert into clients
-values (1,'Sylwia','Tentrak','sylwiat@test.pl',34, 5, 'test occupation 1', 1);
+values (1, 34, 5, 'test occupation 1', 1);
+
 
 /*ADDRESSES */
 insert into addresses
@@ -50,9 +51,18 @@ values (1, 'test name 1', 1, 2, 30, 1, DATE '2021-03-11', DATE '2021-08-11', 150
 
 /*OPINIONS */
 insert into opinions
-values (0, 'test text 0', 0, 0, 0, 0);
+values (0, 'test text 0',DATE '2021-01-23', 0, 0, 0, 0);
 insert into opinions
-values (1, 'test text 1', 1, 1, 0, 1);
+values (1, 'test text 1',DATE '2021-02-02', 1, 1, 0, 1);
+
+/*AGREEMENTS*/
+
+/*
+insert into AGREEMENTS
+values ( 0, 0, 0, DATE '2021-02-02',DATE '2021-03-08', 300, 0, 0, 0);
+insert into AGREEMENTS
+values ( 1, 0, 0, DATE '2021-04-05',DATE '2021-06-13', 200, 0, 1, 0);
+*/
 
 
 

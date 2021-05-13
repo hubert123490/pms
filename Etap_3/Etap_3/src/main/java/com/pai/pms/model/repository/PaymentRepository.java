@@ -7,4 +7,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PaymentRepository  extends JpaRepository<Payment,Integer> {
+    @Override
+    <S extends Payment> S save(S s);
 }

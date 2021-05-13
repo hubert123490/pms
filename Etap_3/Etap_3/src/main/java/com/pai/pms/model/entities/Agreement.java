@@ -21,7 +21,7 @@ public class Agreement {
     @NotBlank
     private LocalDate dateTo;
     @NotBlank
-    private double monthlyFee;
+    private double dailyFee;
     @JoinColumn(name = "client_id")
     @OneToOne
     private Client client;
@@ -35,6 +35,18 @@ public class Agreement {
     private Payment payment;
 
     public Agreement() {
+    }
+
+    public Agreement(double discount, double deposit, LocalDate dateFrom, LocalDate dateTo, double dailyFee, Client client, Apartment apartment, Landlord landlord, Payment payment) {
+        this.discount = discount;
+        this.deposit = deposit;
+        this.dateFrom = dateFrom;
+        this.dateTo = dateTo;
+        this.dailyFee = dailyFee;
+        this.client = client;
+        this.apartment = apartment;
+        this.landlord = landlord;
+        this.payment = payment;
     }
 
     public int getId() {
@@ -77,12 +89,12 @@ public class Agreement {
         this.dateTo = dateTo;
     }
 
-    public double getMonthlyFee() {
-        return monthlyFee;
+    public double getDailyFee() {
+        return dailyFee;
     }
 
-    public void setMonthlyFee(double monthlyFee) {
-        this.monthlyFee = monthlyFee;
+    public void setDailyFee(double dailyFee) {
+        this.dailyFee = dailyFee;
     }
 
     public Client getClient() {

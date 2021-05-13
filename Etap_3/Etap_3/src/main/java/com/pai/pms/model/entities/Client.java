@@ -14,16 +14,12 @@ public class Client {
     @GenericGenerator(name = "inc", strategy = "increment")
     private int id;
     private int amountOfRents;
-    private String nameClient;
-    private String surnameClient;
-    private String emailClient;
     private int age;
     @NotBlank
     private String occupation;
     @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
-
 
     @OneToMany(mappedBy = "client")
     private List<Opinion> opinions;
@@ -32,6 +28,13 @@ public class Client {
     private Agreement agreement;
 
     public Client() {
+    }
+
+    public Client(int amountOfRents, int age, String occupation, User user) {
+        this.amountOfRents = amountOfRents;
+        this.age = age;
+        this.occupation = occupation;
+        this.user = user;
     }
 
     public int getId() {
@@ -72,29 +75,6 @@ public class Client {
         this.agreement = agreement;
     }
 
-    public String getNameClient() {
-        return nameClient;
-    }
-
-    public void setNameClient(String nameClient) {
-        this.nameClient = nameClient;
-    }
-
-    public String getSurnameClient() {
-        return surnameClient;
-    }
-
-    public void setSurnameClient(String surnameClient) {
-        this.surnameClient = surnameClient;
-    }
-
-    public String getEmailClient() {
-        return emailClient;
-    }
-
-    public void setEmailClient(String emailClient) {
-        this.emailClient = emailClient;
-    }
 
     public int getAge() {
         return age;
