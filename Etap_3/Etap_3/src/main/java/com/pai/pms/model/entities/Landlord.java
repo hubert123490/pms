@@ -22,8 +22,8 @@ public class Landlord {
     @OneToMany(mappedBy = "landlord")
     private Set<Apartment> apartments;
 
-    @OneToOne(mappedBy = "landlord")
-    private Agreement agreement;
+    @OneToMany(mappedBy = "landlord")
+    private Set<Agreement> agreements;
 
     public Landlord() {
     }
@@ -68,11 +68,11 @@ public class Landlord {
         this.apartments = apartments;
     }
 
-    public Agreement getAgreement() {
-        return agreement;
+    public Set<Agreement> getAgreements() {
+        return agreements;
     }
 
-    public void setAgreement(Agreement agreement) {
-        this.agreement = agreement;
+    public void setAgreements(Set<Agreement> agreements) {
+        this.agreements = agreements;
     }
 }

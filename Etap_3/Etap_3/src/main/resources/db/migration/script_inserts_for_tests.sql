@@ -57,12 +57,12 @@ values (1, 'test text 1',DATE '2021-02-02', 1, 1, 0, 1);
 
 /*AGREEMENTS*/
 
-/*
+
 insert into AGREEMENTS
 values ( 0, 0, 0, DATE '2021-02-02',DATE '2021-03-08', 300, 0, 0, 0);
 insert into AGREEMENTS
 values ( 1, 0, 0, DATE '2021-04-05',DATE '2021-06-13', 200, 0, 1, 0);
-*/
+
 
 
 

@@ -24,8 +24,8 @@ public class Client {
     @OneToMany(mappedBy = "client")
     private List<Opinion> opinions;
 
-    @OneToOne(mappedBy = "client")
-    private Agreement agreement;
+    @OneToMany(mappedBy = "client")
+    private Set<Agreement> agreements;
 
     public Client() {
     }
@@ -67,14 +67,21 @@ public class Client {
     }
 
 
+    public List<Opinion> getOpinions() {
+        return opinions;
+    }
+
     public void setOpinions(List<Opinion> opinions) {
         this.opinions = opinions;
     }
 
-    public void setAgreement(Agreement agreement) {
-        this.agreement = agreement;
+    public Set<Agreement> getAgreements() {
+        return agreements;
     }
 
+    public void setAgreements(Set<Agreement> agreements) {
+        this.agreements = agreements;
+    }
 
     public int getAge() {
         return age;

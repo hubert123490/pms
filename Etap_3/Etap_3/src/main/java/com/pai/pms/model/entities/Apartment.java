@@ -4,6 +4,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "apartments")
@@ -30,8 +31,8 @@ public class Apartment {
     @JoinColumn(name = "landlord_id")
     @ManyToOne
     private Landlord landlord;
-    @OneToOne(mappedBy = "apartment")
-    private Agreement agreement;
+    @OneToMany(mappedBy = "apartment")
+    private Set<Agreement> agreements;
     @JoinColumn(name = "additional_field_id")
     @OneToOne
     private AdditionalField additionalField;
@@ -154,12 +155,12 @@ public class Apartment {
         this.landlord = landlord;
     }
 
-    public Agreement getAgreement() {
-        return agreement;
+    public Set<Agreement> getAgreements() {
+        return agreements;
     }
 
-    public void setAgreement(Agreement agreement) {
-        this.agreement = agreement;
+    public void setAgreement(Set<Agreement> agreements) {
+        this.agreements = agreements;
     }
 
     public AdditionalField getAdditionalField() {

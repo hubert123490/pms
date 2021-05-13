@@ -23,13 +23,13 @@ public class Agreement {
     @NotBlank
     private double dailyFee;
     @JoinColumn(name = "client_id")
-    @OneToOne
+    @ManyToOne
     private Client client;
     @JoinColumn(name = "apartment_id")
-    @OneToOne
+    @ManyToOne
     private Apartment apartment;
     @JoinColumn(name = "landlord_id")
-    @OneToOne
+    @ManyToOne
     private Landlord landlord;
     @OneToOne(mappedBy = "agreement")
     private Payment payment;
