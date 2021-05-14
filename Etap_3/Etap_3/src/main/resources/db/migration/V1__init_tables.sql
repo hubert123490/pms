@@ -120,6 +120,13 @@ create table payments
     foreign key (agreement_id) references agreements (id)
 );
 
+create table tourist_attraction
+(
+    id int primary key auto_increment,
+    city varchar(100) not null,
+    description varchar(250) not null
+);
+
 
 
 
