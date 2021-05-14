@@ -2,11 +2,13 @@ package com.pai.pms.model.dto;
 
 import com.pai.pms.model.entities.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
 
 @Data
+@NoArgsConstructor
 public class AgreementWriteModel {
     private double discount;
     private double deposit;

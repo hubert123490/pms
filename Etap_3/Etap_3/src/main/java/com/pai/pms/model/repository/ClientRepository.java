@@ -7,6 +7,7 @@ import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @RepositoryRestResource
@@ -20,4 +21,5 @@ public interface ClientRepository  extends JpaRepository<Client,Integer> {
     @RestResource(exported = false)
     void delete(Client client);
 
+    Optional<Client> findByUser_Id(Integer integer);
 }

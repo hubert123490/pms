@@ -3,10 +3,8 @@ package com.pai.pms.logic.service;
 import com.pai.pms.model.dto.AgreementWriteModel;
 import com.pai.pms.model.dto.PaymentWriteModel;
 import com.pai.pms.model.entities.*;
-import com.pai.pms.model.repository.AgreementRepository;
-import com.pai.pms.model.repository.ApartmentRepository;
-import com.pai.pms.model.repository.ClientRepository;
-import com.pai.pms.model.repository.PaymentRepository;
+import com.pai.pms.model.repository.*;
+import com.pai.pms.security.services.UserDetailsImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
@@ -17,13 +15,16 @@ import org.springframework.stereotype.Service;
 public class PaymentService {
     private final AgreementRepository agreementRepository;
     private final PaymentRepository paymentRepository;
+    private final ClientRepository clientRepository;
     private final ApartmentRepository apartmentRepository;
     Logger logger = LoggerFactory.getLogger(PaymentService.class);
 
     public PaymentService(AgreementRepository agreementRepository, PaymentRepository paymentRepository,
-                          ClientRepository clientRepository, ApartmentRepository apartmentRepository) {
+                          ClientRepository clientRepository, ApartmentRepository apartmentRepository,
+                          UserRepository userRepository) {
         this.agreementRepository = agreementRepository;
         this.paymentRepository = paymentRepository;
+        this.clientRepository = clientRepository;
         this.apartmentRepository = apartmentRepository;
     }
 
@@ -33,8 +34,9 @@ public class PaymentService {
         Payment payment = paymentWriteModel.toPayment(agreement);
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        User user = (User)authentication.getPrincipal();
-        Client client = user.getClient();
+        UserDetailsImpl userImpl = (UserDetailsImpl)authentication.getPrincipal();
+        Client client = clientRepository.findByUser_Id(userImpl.getId()).orElseThrow();
+        client.setAmountOfRents(client.getAmountOfRents() + 1);
 
         Apartment apartment = apartmentRepository.findById(apartmentId).orElse(null);
         if(apartment == null)

@@ -1,10 +1,9 @@
 package com.pai.pms.controller;
 
-import com.pai.pms.logic.service.ApartmentDetailService;
 import com.pai.pms.logic.service.PaymentService;
-import com.pai.pms.model.dto.AgreementWriteModel;
-import com.pai.pms.model.dto.PaymentWriteModel;
 import com.pai.pms.model.entities.Payment;
+import com.pai.pms.payload.request.PaymentRequest;
+import com.pai.pms.payload.response.PaymentResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
@@ -27,11 +26,11 @@ public class PaymentController {
     @PostMapping
     @RequestMapping("client")
     @PreAuthorize("hasRole('CLIENT')")
-    ResponseEntity<Payment> payYourBillsXD(@RequestBody @Valid AgreementWriteModel agreementWriteModel,
-                                                     @RequestBody @Valid PaymentWriteModel paymentWriteModel,
-                                                     @PathVariable("id") int apartmentId) {
-
-        Payment result = paymentService.makePayment(paymentWriteModel, agreementWriteModel, apartmentId);
-        return ResponseEntity.created(URI.create("/" + result.getId())).body(result);
+    ResponseEntity<PaymentResponse> payYourBillsXD(@RequestBody @Valid PaymentRequest paymentRequest) {
+        Payment payment = paymentService.makePayment(paymentRequest.getPaymentWriteModel(), paymentRequest.getAgreementWriteModel()
+                , paymentRequest.getApartmentId());
+        PaymentResponse result = new PaymentResponse();
+        result.setApartmentId(paymentRequest.getApartmentId());
+        return ResponseEntity.created(URI.create("/" + result.getApartmentId())).body(result);
     }
 }

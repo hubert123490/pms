@@ -3,10 +3,12 @@ package com.pai.pms.model.dto;
 import com.pai.pms.model.entities.Agreement;
 import com.pai.pms.model.entities.Payment;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
 @Data
+@NoArgsConstructor
 public class PaymentWriteModel {
     private LocalDate date;
     private double fee;

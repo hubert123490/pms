@@ -90,4 +90,8 @@ public class Client {
     public void setAge(int age) {
         this.age = age;
     }
+
+    public User getUser() {
+        return user;
+    }
 }

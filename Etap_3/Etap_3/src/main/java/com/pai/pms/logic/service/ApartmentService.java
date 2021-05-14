@@ -1,6 +1,5 @@
 package com.pai.pms.logic.service;
 
-import com.pai.pms.controller.ApartmentController;
 import com.pai.pms.model.dto.ApartmentReadModel;
 import com.pai.pms.model.repository.ApartmentRepository;
 import org.slf4j.Logger;

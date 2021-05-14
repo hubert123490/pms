@@ -16,11 +16,8 @@ public class Agreement {
     private int id;
     private double discount;
     private double deposit;
-    @NotBlank
     private LocalDate dateFrom;
-    @NotBlank
     private LocalDate dateTo;
-    @NotBlank
     private double dailyFee;
     @JoinColumn(name = "client_id")
     @ManyToOne
@@ -31,7 +28,7 @@ public class Agreement {
     @JoinColumn(name = "landlord_id")
     @ManyToOne
     private Landlord landlord;
-    @OneToOne(mappedBy = "agreement")
+    @OneToOne(mappedBy = "agreement", cascade=CascadeType.ALL)
     private Payment payment;
 
     public Agreement() {
