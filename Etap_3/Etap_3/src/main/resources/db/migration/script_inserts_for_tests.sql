@@ -63,7 +63,12 @@ values ( 0, 0, 0, DATE '2021-02-02',DATE '2021-03-08', 300, 0, 0, 0);
 insert into AGREEMENTS
 values ( 1, 0, 0, DATE '2021-04-05',DATE '2021-06-13', 200, 0, 1, 0);
 
+/*TOURIST_ATTRACTION*/
 
+insert into TOURIST_ATTRACTION
+values ( 0, 'Kielce', 'Często odwiedzane miejsce' );
+insert into TOURIST_ATTRACTION
+values ( 1, 'Warszawa', 'Miejsce lubiane przez turystów' );
 
 
 
