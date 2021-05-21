@@ -9,12 +9,12 @@ insert into users
 values (2, 'test name 2', 'test last name 2', 'test email 2', 123456789, 'test login 2',
         'test password 2');
 insert into users
-values (3, 'test name 3', 'test last name 3', 'test email 3', 123456789, 'test login 3',
+values (8, 'test name 3', 'test last name 3', 'test email 3', 123456789, 'test login 3',
         'test password 3');
 
 /*CLIENTS */
 insert into clients
-values (0, 24, 1, 'test occupation 0', 0);
+values (6, 24, 1, 'test occupation 0', 8);
 insert into clients
 values (1, 34, 5, 'test occupation 1', 1);
 
