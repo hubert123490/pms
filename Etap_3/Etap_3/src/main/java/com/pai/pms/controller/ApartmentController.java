@@ -31,5 +31,20 @@ public class ApartmentController {
         return ResponseEntity.ok(service.readAll());
     }
 
+    @GetMapping
+    @RequestMapping("/period")
+    ResponseEntity<List<ApartmentReadModel>> readAllApartmentsInTimePeriod(@DateTimeFormat(pattern = "yyyy-MM-dd") @Param("from") LocalDate from,
+                                                                           @DateTimeFormat(pattern = "yyyy-MM-dd") @Param("to") LocalDate to
+    ) {
+        return ResponseEntity.ok(service.readAllInCertainTimePeriod(from, to));
+    }
+
+    @GetMapping
+    @RequestMapping("/apartments/read")
+    ResponseEntity<List<ApartmentReadModel>> readAllApartmentsWithFilters(@DateTimeFormat(pattern = "yyyy-MM-dd") @Param("from") LocalDate from,
+                                                                          @DateTimeFormat(pattern = "yyyy-MM-dd") @Param("to") LocalDate to,
+                                                                          @Param("name") String name) {
+        return ResponseEntity.ok(service.readAllWithFilters(from, to, name));
+    }
 
 }
