@@ -27,6 +27,8 @@ public class Address {
     private String country;
     @OneToOne(mappedBy = "address")
     private Apartment apartment;
+    @OneToOne(mappedBy = "address")
+    private Landlord landlord;
 
     public Address() {
     }
@@ -93,5 +95,13 @@ public class Address {
 
     public void setApartment(Apartment apartment) {
         this.apartment = apartment;
+    }
+
+    public Landlord getLandlord() {
+        return landlord;
+    }
+
+    public void setLandlord(Landlord landlord) {
+        this.landlord = landlord;
     }
 }
