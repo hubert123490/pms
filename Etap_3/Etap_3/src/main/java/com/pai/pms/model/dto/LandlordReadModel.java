@@ -10,12 +10,6 @@ public class LandlordReadModel {
     private String email;
     private int phone;
     private int idCard;
-    private String password;
-    private int apartmentNumber;
-    private int apartmentBuilding;
-    private String street;
-    private String postcode;
-    private String city;
 
     public LandlordReadModel(Landlord landlord) {
         this.id = landlord.getId();
@@ -24,11 +18,5 @@ public class LandlordReadModel {
         this.idCard = landlord.getIdCard();
         this.phone = landlord.getUser().getPhone();
         this.email = landlord.getUser().getEmail();
-        this.password = landlord.getUser().getPassword();
-        this.apartmentNumber = landlord.getAddress().getApartmentNumber();
-        this.apartmentBuilding = landlord.getAddress().getApartmentBuilding();
-        this.street = landlord.getAddress().getStreet();
-        this.postcode = landlord.getAddress().getPostcode();
-        this.city = landlord.getAddress().getCity();
     }
 }

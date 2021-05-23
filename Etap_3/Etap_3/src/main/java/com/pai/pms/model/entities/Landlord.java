@@ -16,9 +16,6 @@ public class Landlord {
     @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
-    @OneToOne
-    @JoinColumn(name = "address_id")
-    private Address address;
     @OneToMany(mappedBy = "landlord")
     private Set<Opinion> opinions;
     @OneToMany(mappedBy = "landlord")
@@ -26,6 +23,10 @@ public class Landlord {
 
     @OneToMany(mappedBy = "landlord")
     private Set<Agreement> agreements;
+
+    public Landlord(User user) {
+        this.user = user;
+    }
 
     public Landlord() {
     }
@@ -78,11 +79,4 @@ public class Landlord {
         this.agreements = agreements;
     }
 
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
 }

@@ -45,9 +45,7 @@ CREATE TABLE landlords
     id         int primary key auto_increment,
     id_card    int not null,
     user_id    int not null,
-    address_id int not null,
-    foreign key (user_id) references users (id),
-    foreign key (address_id) references addresses (id)
+    foreign key (user_id) references users (id)
 );
 create table additional_fields
 (

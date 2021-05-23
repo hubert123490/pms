@@ -29,11 +29,11 @@ values (2, 2, 2, 'test street 2', 'test postcode 2', 'test city 2', 'test countr
 
 /*LANDLORDS */
 insert into landlords
-values (0, 0, 0, 0);
+values (0, 0, 0);
 insert into landlords
-values (1, 1, 1, 1);
+values (1, 1, 1);
 insert into landlords
-values (2, 2, 2, 2);
+values (2, 2, 2);
 
 /*ADDITIONAL_FIELDS */
 insert into additional_fields
