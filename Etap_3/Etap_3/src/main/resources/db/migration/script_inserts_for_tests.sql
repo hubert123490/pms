@@ -14,7 +14,7 @@ values (8, 'test name 3', 'test last name 3', 'test email 3', 123456789, 'test l
 
 /*CLIENTS */
 insert into clients
-values (6, 24, 1, 'test occupation 0', 8);
+values (0, 24, 1, 'test occupation 0', 8);
 insert into clients
 values (1, 34, 5, 'test occupation 1', 1);
 
@@ -37,11 +37,11 @@ values (2, 2, 2);
 
 /*ADDITIONAL_FIELDS */
 insert into additional_fields
-values (0, 0, 0, 0, 0);
+values (0, 0, 0, 0, 0,0,1);
 insert into additional_fields
-values (1, 1, 0, 1, 0);
+values (1, 1, 0, 1, 0,0,0);
 insert into additional_fields
-values (2, 1, 1, 1, 1);
+values (2, 1, 1, 1, 1,1,0);
 
 /*APARTMENTS */
 insert into APARTMENTS

@@ -50,10 +50,12 @@ CREATE TABLE landlords
 create table additional_fields
 (
     id                 int primary key auto_increment,
-    smoke_permission   BIT not null,
-    animals_permission BIT not null,
+    no_smoking      BIT not null,
+    no_animals      BIT not null,
+    no_parties      BIT not null,
     parking_available  BIT not null,
-    balcony_available  BIT not null
+    balcony_available  BIT not null,
+    shops_nearby BIT not null
 );
 
 CREATE TABLE apartments

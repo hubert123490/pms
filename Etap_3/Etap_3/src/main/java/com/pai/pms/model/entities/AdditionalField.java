@@ -11,10 +11,12 @@ public class AdditionalField {
     @GeneratedValue(generator = "inc")
     @GenericGenerator(name = "inc", strategy = "increment")
     private int id;
-    private boolean smoke_permission;
-    private boolean animals_permission;
-    private boolean parking_available;
-    private boolean balcony_available;
+    private boolean noSmoking;
+    private boolean noAnimals;
+    private boolean noParties;
+    private boolean parkingAvailable;
+    private boolean balconyAvailable;
+    private boolean shopsNearby;
     @OneToOne(mappedBy = "additionalField")
     private Apartment apartment;
 
@@ -29,36 +31,52 @@ public class AdditionalField {
         this.id = id;
     }
 
-    public boolean isSmoke_permission() {
-        return smoke_permission;
+    public boolean isNoSmoking() {
+        return noSmoking;
     }
 
-    public void setSmoke_permission(boolean smoke_permission) {
-        this.smoke_permission = smoke_permission;
+    public void setNoSmoking(boolean noSmoking) {
+        this.noSmoking = noSmoking;
     }
 
-    public boolean isAnimals_permission() {
-        return animals_permission;
+    public boolean isNoAnimals() {
+        return noAnimals;
     }
 
-    public void setAnimals_permission(boolean animals_permission) {
-        this.animals_permission = animals_permission;
+    public void setNoAnimals(boolean noAnimals) {
+        this.noAnimals = noAnimals;
     }
 
-    public boolean isParking_available() {
-        return parking_available;
+    public boolean isNoParties() {
+        return noParties;
     }
 
-    public void setParking_available(boolean parking_available) {
-        this.parking_available = parking_available;
+    public void setNoParties(boolean noParties) {
+        this.noParties = noParties;
     }
 
-    public boolean isBalcony_available() {
-        return balcony_available;
+    public boolean isParkingAvailable() {
+        return parkingAvailable;
     }
 
-    public void setBalcony_available(boolean balcony_available) {
-        this.balcony_available = balcony_available;
+    public void setParkingAvailable(boolean parkingAvailable) {
+        this.parkingAvailable = parkingAvailable;
+    }
+
+    public boolean isBalconyAvailable() {
+        return balconyAvailable;
+    }
+
+    public void setBalconyAvailable(boolean balconyAvailable) {
+        this.balconyAvailable = balconyAvailable;
+    }
+
+    public boolean isShopsNearby() {
+        return shopsNearby;
+    }
+
+    public void setShopsNearby(boolean shopsNearby) {
+        this.shopsNearby = shopsNearby;
     }
 
     public Apartment getApartment() {

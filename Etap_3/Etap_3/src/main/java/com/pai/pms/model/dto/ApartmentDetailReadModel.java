@@ -61,12 +61,12 @@ public class ApartmentDetailReadModel {
 
     private List<String> additionalFieldsDescription(Apartment apartment){
         List<String> result = new ArrayList<String>();
-        if(apartment.getAdditionalField().isAnimals_permission())
-            result.add("Możliwość trzymania zwierząt");
-        if(apartment.getAdditionalField().isBalcony_available())
+        if(apartment.getAdditionalField().isNoAnimals())
+            result.add("Nie można trzymać zwierząt");
+        if(apartment.getAdditionalField().isBalconyAvailable())
             result.add("Balkon dostępny");
-        if (apartment.getAdditionalField().isSmoke_permission())
-            result.add("Możliwość palenia");
+        if (apartment.getAdditionalField().isNoSmoking())
+            result.add("Nie można palić");
         if(result.isEmpty()){
             result.add("Brak");
         }
