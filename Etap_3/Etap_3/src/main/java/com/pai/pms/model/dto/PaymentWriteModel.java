@@ -2,27 +2,20 @@ package com.pai.pms.model.dto;
 
 import com.pai.pms.model.entities.Agreement;
 import com.pai.pms.model.entities.Payment;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
-@Data
-@NoArgsConstructor
-public class PaymentWriteModel {
-    private LocalDate date;
-    private double fee;
+import static java.time.temporal.ChronoUnit.DAYS;
 
-    public PaymentWriteModel(double fee) {
-        this.date = LocalDate.now();
-        this.fee = fee;
-    }
+public class PaymentWriteModel {
+
 
     public Payment toPayment(Agreement agreement){
         Payment payment = new Payment();
-        payment.setDate(this.getDate());
-        payment.setFee(this.getFee());
+        payment.setDate(LocalDate.now());
+        payment.setFee((DAYS.between(agreement.getDateFrom(), agreement.getDateTo()) * agreement.getApartment().getPrice())*agreement.getDiscount()); //calculating fee from period
         payment.setAgreement(agreement);
         return payment;
     }
+
 }

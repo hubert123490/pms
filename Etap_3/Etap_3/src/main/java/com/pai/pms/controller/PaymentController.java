@@ -1,7 +1,6 @@
 package com.pai.pms.controller;
 
 import com.pai.pms.logic.service.PaymentService;
-import com.pai.pms.model.entities.Payment;
 import com.pai.pms.payload.request.PaymentRequest;
 import com.pai.pms.payload.response.PaymentResponse;
 import org.slf4j.Logger;
@@ -23,14 +22,10 @@ public class PaymentController {
         this.paymentService = paymentService;
     }
 
-    @PostMapping
-    @RequestMapping("client")
+    @RequestMapping(value = "client", method = RequestMethod.POST)
     @PreAuthorize("hasRole('CLIENT')")
     ResponseEntity<PaymentResponse> payYourBillsXD(@RequestBody @Valid PaymentRequest paymentRequest) {
-        Payment payment = paymentService.makePayment(paymentRequest.getPaymentWriteModel(), paymentRequest.getAgreementWriteModel()
-                , paymentRequest.getApartmentId());
-        PaymentResponse result = new PaymentResponse();
-        result.setApartmentId(paymentRequest.getApartmentId());
-        return ResponseEntity.created(URI.create("/" + result.getApartmentId())).body(result);
+        PaymentResponse response = paymentService.makePayment(paymentRequest);
+        return ResponseEntity.created(URI.create("/" + response.getApartmentId())).body(response);
     }
 }

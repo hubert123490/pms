@@ -1,27 +1,27 @@
 package com.pai.pms.payload.request;
 
-import com.pai.pms.model.dto.AgreementWriteModel;
-import com.pai.pms.model.dto.PaymentWriteModel;
+import java.time.LocalDate;
 
 public class PaymentRequest {
-    private PaymentWriteModel paymentWriteModel;
-    private AgreementWriteModel agreementWriteModel;
+    private LocalDate dateFrom;
+    private LocalDate dateTo;
     private int apartmentId;
 
-    public PaymentWriteModel getPaymentWriteModel() {
-        return paymentWriteModel;
+
+    public LocalDate getDateFrom() {
+        return dateFrom;
     }
 
-    public void setPaymentWriteModel(PaymentWriteModel paymentWriteModel) {
-        this.paymentWriteModel = paymentWriteModel;
+    public void setDateFrom(LocalDate dateFrom) {
+        this.dateFrom = dateFrom;
     }
 
-    public AgreementWriteModel getAgreementWriteModel() {
-        return agreementWriteModel;
+    public LocalDate getDateTo() {
+        return dateTo;
     }
 
-    public void setAgreementWriteModel(AgreementWriteModel agreementWriteModel) {
-        this.agreementWriteModel = agreementWriteModel;
+    public void setDateTo(LocalDate dateTo) {
+        this.dateTo = dateTo;
     }
 
     public int getApartmentId() {

@@ -1,52 +1,49 @@
 package com.pai.pms.model.dto;
 
 import com.pai.pms.model.entities.*;
-import lombok.Data;
+import com.pai.pms.payload.request.PaymentRequest;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
-
-@Data
 @NoArgsConstructor
 public class AgreementWriteModel {
-    private double discount;
-    private double deposit;
     private LocalDate dateFrom;
     private LocalDate dateTo;
-    private double dailyFee;
 
-    public AgreementWriteModel(double discount, double deposit, LocalDate dateFrom, LocalDate dateTo,
-                               double dailyFee) {
-        this.discount = discount;
-        this.deposit = deposit;
-        this.dateFrom = dateFrom;
-        this.dateTo = dateTo;
-        this.dailyFee = dailyFee;
+    public AgreementWriteModel(PaymentRequest paymentRequest){
+        this.dateFrom = paymentRequest.getDateFrom();
+        this.dateTo = paymentRequest.getDateTo();
     }
 
-    public Agreement toAgreement(Client client, Apartment apartment, Payment payment){
+    public Agreement toAgreement(Client client, Apartment apartment){
         Agreement agreement = new Agreement();
-
-        agreement.setDiscount(this.getDiscount());
-        agreement.setDeposit(this.getDeposit());
+        agreement.setDiscount(1.0);
+        agreement.setDeposit(0);
         agreement.setDateFrom(this.getDateFrom());
         agreement.setDateTo(this.getDateTo());
-        agreement.setDailyFee(this.getDailyFee());
+        agreement.setDailyFee(apartment.getPrice());
         agreement.setClient(client);
         agreement.setApartment(apartment);
         agreement.setLandlord(apartment.getLandlord());
-        agreement.setPayment(payment);
-
         return agreement;
     }
 
-    public void setAgreementFields(Agreement agreement){
-        agreement.setDiscount(this.getDiscount());
-        agreement.setDeposit(this.getDeposit());
-        agreement.setDateFrom(this.getDateFrom());
-        agreement.setDateTo(this.getDateTo());
-        agreement.setDailyFee(this.getDailyFee());
+    public LocalDate getDateFrom() {
+        return dateFrom;
     }
+
+    public void setDateFrom(LocalDate dateFrom) {
+        this.dateFrom = dateFrom;
+    }
+
+    public LocalDate getDateTo() {
+        return dateTo;
+    }
+
+    public void setDateTo(LocalDate dateTo) {
+        this.dateTo = dateTo;
+    }
+
 }
 
