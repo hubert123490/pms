@@ -14,6 +14,7 @@ public class Payment {
     private int id;
     private LocalDate date;
     private double fee;
+    private boolean paymentDone;
     @JoinColumn(name = "agreement_id")
     @OneToOne
     private Agreement agreement;
@@ -57,5 +58,13 @@ public class Payment {
 
     public void setAgreement(Agreement agreement) {
         this.agreement = agreement;
+    }
+
+    public boolean isPaymentDone() {
+        return paymentDone;
+    }
+
+    public void setPaymentDone(boolean paymentDone) {
+        this.paymentDone = paymentDone;
     }
 }

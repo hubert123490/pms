@@ -13,6 +13,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+
 
 @Service
 public class PaymentService {
@@ -47,11 +49,32 @@ public class PaymentService {
         Payment payment = new PaymentWriteModel().toPayment(agreement);
         agreement.setPayment(payment);
 
+        //EXCEPTIONS
+        //check for available period
+        if(!isWithinRange(agreement.getDateFrom(), apartment) || !isWithinRange(agreement.getDateTo(), apartment))
+            try {
+                throw new IllegalArgumentException();
+            } catch (Exception e) {
+                e.printStackTrace();
+                return null;
+            }
+        if(payment.getFee() <= 0){
+            try {
+                throw new IllegalArgumentException();
+            } catch (Exception e) {
+                e.printStackTrace();
+                return null;
+            }
+        }
+
         agreementRepository.save(agreement);
         paymentRepository.save(payment);
 
         return new PaymentResponse(payment, agreement, apartment.getId());
     }
 
+    private boolean isWithinRange(LocalDate date, Apartment apartment) {
+        return !(date.isBefore(apartment.getDateFrom()) || date.isAfter(apartment.getDateTo()));
+    }
 
 }

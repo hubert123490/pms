@@ -25,7 +25,12 @@ public class PaymentController {
     @RequestMapping(value = "client", method = RequestMethod.POST)
     @PreAuthorize("hasRole('CLIENT')")
     ResponseEntity<PaymentResponse> payYourBillsXD(@RequestBody @Valid PaymentRequest paymentRequest) {
-        PaymentResponse response = paymentService.makePayment(paymentRequest);
-        return ResponseEntity.created(URI.create("/" + response.getApartmentId())).body(response);
+        try {
+            PaymentResponse response = paymentService.makePayment(paymentRequest);
+            return ResponseEntity.created(URI.create("/" + response.getApartmentId())).body(response);
+        }catch (Exception e){
+            return ResponseEntity.status(500).build();
+        }
+
     }
 }
