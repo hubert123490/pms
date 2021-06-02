@@ -5,6 +5,7 @@ import com.pai.pms.payload.request.PaymentRequest;
 import com.pai.pms.payload.response.PaymentResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -24,12 +25,14 @@ public class PaymentController {
 
     @RequestMapping(value = "client", method = RequestMethod.POST)
     @PreAuthorize("hasRole('CLIENT')")
-    ResponseEntity<PaymentResponse> payYourBillsXD(@RequestBody @Valid PaymentRequest paymentRequest) {
+    ResponseEntity<?> payYourBillsXD(@RequestBody @Valid PaymentRequest paymentRequest) {
         try {
             PaymentResponse response = paymentService.makePayment(paymentRequest);
             return ResponseEntity.created(URI.create("/" + response.getApartmentId())).body(response);
         }catch (Exception e){
-            return ResponseEntity.status(500).build();
+            return new ResponseEntity<>(
+                    "Prawdopodobnie wybrany przedział czasowy nie znajduje się w dostępnym przedziale czasowym dla wybranego apartamentu",
+                    HttpStatus.BAD_REQUEST);
         }
 
     }
