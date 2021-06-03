@@ -15,7 +15,6 @@ public class Opinion {
     private int id;
     @NotBlank
     private String text;
-    @NotBlank
     private LocalDate publishedDate;
     @JoinColumn(name = "client_id")
     @ManyToOne
@@ -30,8 +29,6 @@ public class Opinion {
     @ManyToOne
     private User user;
 
-    public Opinion() {
-    }
 
     public int getId() {
         return id;
