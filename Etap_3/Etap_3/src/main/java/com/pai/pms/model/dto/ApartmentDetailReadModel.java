@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 
 @Data
 public class ApartmentDetailReadModel {
+    private int apartmentId;
     private String apartmentName;
     private String description;
     private LocalDate from;
@@ -28,6 +29,7 @@ public class ApartmentDetailReadModel {
 
 
     public ApartmentDetailReadModel(Apartment apartment) {
+        this.apartmentId = apartment.getId();
         this.apartmentName = apartment.getName();
         this.description = "tmp description, add description to apartment in database please!";
         this.from = apartment.getDateFrom();
@@ -42,7 +44,6 @@ public class ApartmentDetailReadModel {
         this.contact = apartment.getLandlord().getUser().getPhone();
         this.price = apartment.getPrice();
         this.opinionReadModel = getAllOpinionsFromApartment(apartment);
-
     }
 
     private String wifiDescription(Boolean isWifi){

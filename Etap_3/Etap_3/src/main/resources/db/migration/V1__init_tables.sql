@@ -116,6 +116,7 @@ create table payments
     id           int primary key auto_increment,
     date         date   not null,
     fee          double not null,
+    payment_done bit not null ,
     agreement_id int    not null,
     foreign key (agreement_id) references agreements (id)
 );
