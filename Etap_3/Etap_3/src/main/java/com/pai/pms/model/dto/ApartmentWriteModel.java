@@ -17,16 +17,16 @@ public class ApartmentWriteModel {
     private String city;
 
     public ApartmentWriteModel(Apartment apartment) {
-        this.apartmentNumber = apartment.getAddress().getApartmentNumber();
-        this.apartmentBuilding = apartment.getAddress().getApartmentBuilding();
-        this.street = apartment.getAddress().getStreet();
-        this.postcode = apartment.getAddress().getPostcode();
-        this.city = apartment.getAddress().getCity();
-        this.noSmoking = apartment.getAdditionalField().isNoSmoking();
-        this.noAnimals = apartment.getAdditionalField().isNoAnimals();
-        this.noParties = apartment.getAdditionalField().isNoParties();
-        this.parkingAvailable = apartment.getAdditionalField().isParkingAvailable();
-        this.balconyAvailable = apartment.getAdditionalField().isBalconyAvailable();
-        this.shopsNearby = apartment.getAdditionalField().isShopsNearby();
+        this.apartmentNumber = apartment.getApartmentNumber();
+        this.apartmentBuilding = apartment.getApartmentBuilding();
+        this.street = apartment.getStreet();
+        this.postcode = apartment.getPostcode();
+        this.city = apartment.getCity();
+        this.noSmoking = apartment.isNoSmoking();
+        this.noAnimals = apartment.isNoAnimals();
+        this.noParties = apartment.isNoParties();
+        this.parkingAvailable = apartment.isParkingAvailable();
+        this.balconyAvailable = apartment.isBalconyAvailable();
+        this.shopsNearby = apartment.isShopsNearby();
     }
 }

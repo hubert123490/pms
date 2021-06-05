@@ -25,7 +25,7 @@ public class ApartmentService {
     }
 
     public List<ApartmentReadModel> readByCity(String name) {
-        return repository.findAllByAddress_City(name).stream().map(ApartmentReadModel::new).collect(Collectors.toList());
+        return repository.findAllByCity(name).stream().map(ApartmentReadModel::new).collect(Collectors.toList());
     }
 
     public List<ApartmentReadModel> readAllInCertainTimePeriod(LocalDate from, LocalDate to) {
@@ -33,7 +33,7 @@ public class ApartmentService {
     }
 
     public List<ApartmentReadModel> readAllInCertainTimePeriodAndCity(LocalDate from, LocalDate to, String city){
-        return repository.findAllByDateFromLessThanAndDateToGreaterThanAndAddress_City(from, to, city).stream().map(ApartmentReadModel::new).collect(Collectors.toList());
+        return repository.findAllByDateFromLessThanAndDateToGreaterThanAndCity(from, to, city).stream().map(ApartmentReadModel::new).collect(Collectors.toList());
     }
 
     public List<ApartmentReadModel> readAllFrom(LocalDate from){

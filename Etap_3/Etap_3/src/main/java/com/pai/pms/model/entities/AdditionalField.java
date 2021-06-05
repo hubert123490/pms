@@ -17,8 +17,6 @@ public class AdditionalField {
     private boolean parkingAvailable;
     private boolean balconyAvailable;
     private boolean shopsNearby;
-    @OneToOne(mappedBy = "additionalField")
-    private Apartment apartment;
 
     public AdditionalField() {
     }
@@ -79,11 +77,4 @@ public class AdditionalField {
         this.shopsNearby = shopsNearby;
     }
 
-    public Apartment getApartment() {
-        return apartment;
-    }
-
-    public void setApartment(Apartment apartment) {
-        this.apartment = apartment;
-    }
 }

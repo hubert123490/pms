@@ -14,7 +14,7 @@ public class ApartmentReadModel {
         this.id = apartment.getId();
         this.description = makeApartmentDescription(apartment);
         this.price = apartment.getPrice();
-        this.city = apartment.getAddress().getCity();
+        this.city = apartment.getCity();
     }
 
 

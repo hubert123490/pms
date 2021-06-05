@@ -14,7 +14,7 @@ values (8, 'test name 3', 'test last name 3', 'test email 3', 123456789, 'test l
 
 /*CLIENTS */
 insert into clients
-values (0, 24, 1, 'test occupation 0', 8);
+values (0, 24, 1, 'test occupation 0', 2);
 insert into clients
 values (1, 34, 5, 'test occupation 1', 1);
 
@@ -45,9 +45,10 @@ values (2, 1, 1, 1, 1,1,0);
 
 /*APARTMENTS */
 insert into APARTMENTS
-values (0, 'test name 0', 0, 2, 20, 1, DATE '2021-01-22', DATE '2021-05-11', 200, 1, 1, 'test photo 0', 0, 0, 0);
-insert into APARTMENTS
-values (1, 'test name 1', 1, 2, 30, 1, DATE '2021-03-11', DATE '2021-08-11', 150, 0, 1, 'test photo 0', 1, 1, 1);
+values (0, 'test name 0', 4, 7, 70, true, DATE '2021-01-22', DATE '2021-05-11', 200, true, 'test photo 0', 3, 5, 'nowa','55-555','Kielce',
+        'Polska',true,true,true,true,true,true,0);
+-- insert into APARTMENTS
+-- values (1, 'test name 1', 1, 2, 30, 1, DATE '2021-03-11', DATE '2021-08-11', 150, 0, 1, 'test photo 0', 1, 1, 1);
 
 /*OPINIONS */
 insert into opinions

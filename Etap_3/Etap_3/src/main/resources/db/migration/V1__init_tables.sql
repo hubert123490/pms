@@ -69,15 +69,22 @@ CREATE TABLE apartments
     date_from           DATE         not null,
     date_to             DATE         not null,
     price               double       not null,
-    parking             BIT          not null,
     wi_fi               BIT          not null,
     photo               varchar(100) not null,
+    apartment_number   int,
+    apartment_building int          not null,
+    street             varchar(100) not null,
+    postcode           varchar(100) not null,
+    city               varchar(100) not null,
+    country            varchar(100) not null,
+    no_smoking      BIT not null,
+    no_animals      BIT not null,
+    no_parties      BIT not null,
+    parking_available  BIT not null,
+    balcony_available  BIT not null,
+    shops_nearby BIT not null,
     landlord_id         int          not null,
-    address_id          INT          not null,
-    additional_field_id int          not null,
-    foreign key (landlord_id) references landlords (id),
-    foreign key (address_id) references addresses (id),
-    foreign key (additional_field_id) references additional_fields (id)
+    foreign key (landlord_id) references landlords (id)
 );
 
 create table opinions
