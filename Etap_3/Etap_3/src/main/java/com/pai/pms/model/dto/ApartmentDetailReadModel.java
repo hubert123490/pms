@@ -36,10 +36,10 @@ public class ApartmentDetailReadModel {
         this.to = apartment.getDateTo();
         this.sleepingPlaces = apartment.getSleepingPlaces();
         this.flatArea = apartment.getFlatArea();
-        this.country = apartment.getAddress().getCountry();
-        this.city = apartment.getAddress().getCity();
+        this.country = apartment.getCountry();
+        this.city = apartment.getCity();
         this.wifi = wifiDescription(apartment.isWiFi());
-        this.parking = parkingDescription(apartment.isParking());
+        this.parking = parkingDescription(apartment.isParkingAvailable());
         this.additionalFields = additionalFieldsDescription(apartment);
         this.contact = apartment.getLandlord().getUser().getPhone();
         this.price = apartment.getPrice();
@@ -62,12 +62,12 @@ public class ApartmentDetailReadModel {
 
     private List<String> additionalFieldsDescription(Apartment apartment){
         List<String> result = new ArrayList<String>();
-        if(apartment.getAdditionalField().isAnimals_permission())
-            result.add("Możliwość trzymania zwierząt");
-        if(apartment.getAdditionalField().isBalcony_available())
+        if(apartment.isNoAnimals())
+            result.add("Nie można trzymać zwierząt");
+        if(apartment.isBalconyAvailable())
             result.add("Balkon dostępny");
-        if (apartment.getAdditionalField().isSmoke_permission())
-            result.add("Możliwość palenia");
+        if (apartment.isNoSmoking())
+            result.add("Nie można palić");
         if(result.isEmpty()){
             result.add("Brak");
         }

@@ -52,32 +52,42 @@ CREATE TABLE landlords
 create table additional_fields
 (
     id                 int primary key auto_increment,
-    smoke_permission   BIT not null,
-    animals_permission BIT not null,
+    no_smoking      BIT not null,
+    no_animals      BIT not null,
+    no_parties      BIT not null,
     parking_available  BIT not null,
-    balcony_available  BIT not null
+    balcony_available  BIT not null,
+    shops_nearby BIT not null
 );
 
 CREATE TABLE apartments
 (
     id                  int primary key auto_increment,
     name                varchar(100) not null,
+    discount            BIT null,
     room_number         int          null,
     sleeping_places     int          null,
     flat_area           int          null,
     is_empty            BIT          not null,
-    date_from           DATE         not null,
-    date_to             DATE         not null,
+    date_from           DATE,
+    date_to             DATE,
     price               double       not null,
-    parking             BIT          not null,
-    wi_fi               BIT          not null,
-    photo               varchar(100) not null,
-    landlord_id         int          not null,
-    address_id          INT          not null,
-    additional_field_id int          not null,
-    foreign key (landlord_id) references landlords (id),
-    foreign key (address_id) references addresses (id),
-    foreign key (additional_field_id) references additional_fields (id)
+    wi_fi               BIT,
+    photo               varchar(100),
+    apartment_number   int,
+    apartment_building int          not null,
+    street             varchar(100) not null,
+    postcode           varchar(100) not null,
+    city               varchar(100) not null,
+    country            varchar(100),
+    no_smoking      BIT not null,
+    no_animals      BIT not null,
+    no_parties      BIT not null,
+    parking_available  BIT not null,
+    balcony_available  BIT not null,
+    shops_nearby BIT not null,
+    landlord_id         int,
+    foreign key (landlord_id) references landlords (id)
 );
 
 create table opinions

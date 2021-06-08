@@ -1,20 +1,24 @@
 package com.pai.pms.logic.service;
-
 import com.pai.pms.model.dto.ApartmentReadModel;
+import com.pai.pms.model.entities.Apartment;
 import com.pai.pms.model.repository.ApartmentRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
+import java.util.UUID;
+import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.stream.Collectors;
 
 @Service
-public class ApartmentService {
-    private final ApartmentRepository repository;
-    Logger logger = LoggerFactory.getLogger(ApartmentService.class);
+public class ApartmentService{
 
+    @Autowired
+    private ApartmentRepository repository;
+    Logger logger = LoggerFactory.getLogger(ApartmentService.class);
 
     public ApartmentService(ApartmentRepository repository) {
         this.repository = repository;
@@ -25,7 +29,7 @@ public class ApartmentService {
     }
 
     public List<ApartmentReadModel> readByCity(String name) {
-        return repository.findAllByAddress_City(name).stream().map(ApartmentReadModel::new).collect(Collectors.toList());
+        return repository.findAllByCity(name).stream().map(ApartmentReadModel::new).collect(Collectors.toList());
     }
 
     public List<ApartmentReadModel> readAllInCertainTimePeriod(LocalDate from, LocalDate to) {
@@ -33,7 +37,7 @@ public class ApartmentService {
     }
 
     public List<ApartmentReadModel> readAllInCertainTimePeriodAndCity(LocalDate from, LocalDate to, String city){
-        return repository.findAllByDateFromLessThanAndDateToGreaterThanAndAddress_City(from, to, city).stream().map(ApartmentReadModel::new).collect(Collectors.toList());
+        return repository.findAllByDateFromLessThanAndDateToGreaterThanAndCity(from, to, city).stream().map(ApartmentReadModel::new).collect(Collectors.toList());
     }
 
     public List<ApartmentReadModel> readAllFrom(LocalDate from){
@@ -68,4 +72,10 @@ public class ApartmentService {
         }
         throw new IllegalStateException();
     }
+
+    public Apartment addNewApartment(Apartment apartment) {
+        apartment.setName(apartment.getName());
+        return repository.save(apartment);
+    }
+
 }
