@@ -17,6 +17,7 @@ public class Apartment {
     @GenericGenerator(name = "inc", strategy = "increment")
     private int id;
     private String name;
+    private boolean discount;
     private int roomNumber;
     private int sleepingPlaces;
     private int flatArea;
@@ -72,6 +73,14 @@ public class Apartment {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public boolean isDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(boolean discount) {
+        this.discount = discount;
     }
 
     public int getRoomNumber() {
