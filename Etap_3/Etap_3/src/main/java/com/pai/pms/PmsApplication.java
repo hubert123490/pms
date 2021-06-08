@@ -1,8 +1,10 @@
 package com.pai.pms;
 
 import com.pai.pms.model.entities.Apartment;
+import com.pai.pms.security.AppProperties;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.Ordered;
@@ -17,10 +19,10 @@ import org.springframework.web.filter.CorsFilter;
 import java.util.Collections;
 
 @SpringBootApplication
+@EnableConfigurationProperties(AppProperties.class)
 public class PmsApplication  implements RepositoryRestConfigurer {
 
 	public static void main(String[] args) {
-		Apartment apartment = new Apartment();
 		SpringApplication.run(PmsApplication.class, args);
 	}
 
@@ -36,7 +38,7 @@ public class PmsApplication  implements RepositoryRestConfigurer {
 
 	}
 
-	// Fix the CORS errors
+	/*// Fix the CORS errors
 	@Bean
 	public FilterRegistrationBean simpleCorsFilter() {
 		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
@@ -50,5 +52,5 @@ public class PmsApplication  implements RepositoryRestConfigurer {
 		FilterRegistrationBean bean = new FilterRegistrationBean<>(new CorsFilter(source));
 		bean.setOrder(Ordered.HIGHEST_PRECEDENCE);
 		return bean;
-	}
+	}*/
 }

@@ -1,12 +1,13 @@
 package com.pai.pms.model.entities;
 
 
+import com.pai.pms.model.enums.AuthProvider;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -28,7 +29,12 @@ public class User {
     private String login;
     @NotBlank(message = "User's password must not be empty")
     private String password;
-    @ManyToMany(fetch = FetchType.LAZY)
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    private AuthProvider provider;
+    private String providerId;
+
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(	name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
@@ -137,5 +143,21 @@ public class User {
 
     public void setOpinions(List<Opinion> opinions) {
         this.opinions = opinions;
+    }
+
+    public AuthProvider getProvider() {
+        return provider;
+    }
+
+    public void setProvider(AuthProvider provider) {
+        this.provider = provider;
+    }
+
+    public String getProviderId() {
+        return providerId;
+    }
+
+    public void setProviderId(String providerId) {
+        this.providerId = providerId;
     }
 }

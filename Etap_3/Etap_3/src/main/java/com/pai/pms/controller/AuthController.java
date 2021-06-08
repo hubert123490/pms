@@ -10,6 +10,7 @@ import javax.validation.Valid;
 import com.pai.pms.model.entities.Client;
 import com.pai.pms.model.entities.Role;
 import com.pai.pms.model.entities.User;
+import com.pai.pms.model.enums.AuthProvider;
 import com.pai.pms.model.enums.ERole;
 import com.pai.pms.model.repository.ClientRepository;
 import com.pai.pms.model.repository.RoleRepository;
@@ -34,7 +35,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
-@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
@@ -130,6 +130,7 @@ public class AuthController {
         }
 
         user.setRoles(roles);
+        user.setProvider(AuthProvider.local);
         userRepository.save(user);
         clientRepository.save(client);
 

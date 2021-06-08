@@ -30,8 +30,9 @@ public class PaymentController {
             PaymentResponse response = paymentService.makePayment(paymentRequest);
             return ResponseEntity.created(URI.create("/" + response.getApartmentId())).body(response);
         }catch (Exception e){
+            e.printStackTrace();
             return new ResponseEntity<>(
-                    "Prawdopodobnie wybrany przedział czasowy nie znajduje się w dostępnym przedziale czasowym dla wybranego apartamentu",
+                    e.getMessage(),
                     HttpStatus.BAD_REQUEST);
         }
 

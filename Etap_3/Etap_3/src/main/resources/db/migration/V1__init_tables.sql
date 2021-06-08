@@ -16,7 +16,9 @@ CREATE table users
     email     varchar(100) not null,
     phone     int,
     login     varchar(100) not null,
-    password  varchar(100) not null
+    password  varchar(100) not null,
+    provider varchar(15),
+    provider_id varchar(30)
 );
 
 CREATE TABLE clients
