@@ -83,7 +83,7 @@ CREATE TABLE apartments
     parking_available  BIT not null,
     balcony_available  BIT not null,
     shops_nearby BIT not null,
-    landlord_id         int          not null,
+    landlord_id         int,
     foreign key (landlord_id) references landlords (id)
 );
 

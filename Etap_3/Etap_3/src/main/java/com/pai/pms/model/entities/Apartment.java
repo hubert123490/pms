@@ -7,6 +7,7 @@ import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
 @Table(name = "apartments")
@@ -51,6 +52,8 @@ public class Apartment {
 
     @OneToMany(mappedBy = "apartment")
     private List<Opinion> opinions;
+
+
 
     public Apartment() {
     }
