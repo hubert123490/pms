@@ -1,27 +1,41 @@
 package com.pai.pms.logic.service;
+
 import com.pai.pms.model.dto.ApartmentReadModel;
+import com.pai.pms.model.dto.ApartmentWriteModel;
+import com.pai.pms.model.entities.AdditionalField;
+import com.pai.pms.model.entities.Address;
 import com.pai.pms.model.entities.Apartment;
+import com.pai.pms.model.entities.User;
+import com.pai.pms.model.repository.AdditionalFieldsRepository;
+import com.pai.pms.model.repository.AddressRepository;
 import com.pai.pms.model.repository.ApartmentRepository;
+import com.pai.pms.model.repository.UserRepository;
+import com.pai.pms.payload.request.AddApartmentRequest;
+import com.pai.pms.security.services.UserDetailsImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Set;
-import java.util.UUID;
-import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.stream.Collectors;
 
 @Service
-public class ApartmentService{
-
-    @Autowired
-    private ApartmentRepository repository;
+public class ApartmentService {
+    private final ApartmentRepository repository;
+    private final AdditionalFieldsRepository additionalFieldsRepository;
+    private final AddressRepository addressRepository;
+    private final UserRepository userRepository;
     Logger logger = LoggerFactory.getLogger(ApartmentService.class);
 
-    public ApartmentService(ApartmentRepository repository) {
+
+    public ApartmentService(ApartmentRepository repository, AdditionalFieldsRepository additionalFieldsRepository, AddressRepository addressRepository, UserRepository userRepository) {
         this.repository = repository;
+        this.additionalFieldsRepository = additionalFieldsRepository;
+        this.addressRepository = addressRepository;
+        this.userRepository = userRepository;
     }
 
     public List<ApartmentReadModel> readAll() {
@@ -29,7 +43,7 @@ public class ApartmentService{
     }
 
     public List<ApartmentReadModel> readByCity(String name) {
-        return repository.findAllByCity(name).stream().map(ApartmentReadModel::new).collect(Collectors.toList());
+        return repository.findAllByAddress_City(name).stream().map(ApartmentReadModel::new).collect(Collectors.toList());
     }
 
     public List<ApartmentReadModel> readAllInCertainTimePeriod(LocalDate from, LocalDate to) {
@@ -37,7 +51,7 @@ public class ApartmentService{
     }
 
     public List<ApartmentReadModel> readAllInCertainTimePeriodAndCity(LocalDate from, LocalDate to, String city){
-        return repository.findAllByDateFromLessThanAndDateToGreaterThanAndCity(from, to, city).stream().map(ApartmentReadModel::new).collect(Collectors.toList());
+        return repository.findAllByDateFromLessThanAndDateToGreaterThanAndAddress_City(from, to, city).stream().map(ApartmentReadModel::new).collect(Collectors.toList());
     }
 
     public List<ApartmentReadModel> readAllFrom(LocalDate from){
@@ -73,9 +87,27 @@ public class ApartmentService{
         throw new IllegalStateException();
     }
 
-    public Apartment addNewApartment(Apartment apartment) {
-        apartment.setName(apartment.getName());
-        return repository.save(apartment);
-    }
+    public ApartmentReadModel addNewApartment(AddApartmentRequest request) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetailsImpl userImpl = (UserDetailsImpl)authentication.getPrincipal();
 
+        User user = userRepository.findById(userImpl.getId()).orElse(null);
+        if(user == null){
+            System.out.println("User is null");
+        }
+
+        Apartment apartment = request.getApartment().toApartment();
+
+        AdditionalField additionalField = request.getAdditionalField().toAdditionalField();
+        Address address = request.getAddress().toAddress();
+
+        apartment.setAdditionalField(additionalField);
+        apartment.setAddress(address);
+        apartment.setLandlord(user.getLandlord());
+
+        additionalFieldsRepository.save(additionalField);
+        addressRepository.save(address);
+        repository.save(apartment);
+        return new ApartmentReadModel(apartment);
+    }
 }

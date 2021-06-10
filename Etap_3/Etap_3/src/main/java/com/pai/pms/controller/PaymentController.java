@@ -32,7 +32,7 @@ public class PaymentController {
         }catch (Exception e){
             e.printStackTrace();
             return new ResponseEntity<>(
-                    e.getMessage(),
+                    "Prawdopodobnie wybrany przedział czasowy nie znajduje się w dostępnym przedziale czasowym dla wybranego apartamentu",
                     HttpStatus.BAD_REQUEST);
         }
 

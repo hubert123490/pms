@@ -53,7 +53,7 @@ public class PaymentService {
         //check for available period
         if(!isWithinRange(agreement.getDateFrom(), apartment) || !isWithinRange(agreement.getDateTo(), apartment))
             try {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("Sprawdź czy przedział czasowy dla apartamentu jest w wybranym przedziale czasowym");
             } catch (Exception e) {
                 e.printStackTrace();
                 return null;

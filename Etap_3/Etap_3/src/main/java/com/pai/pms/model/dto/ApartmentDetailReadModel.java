@@ -36,8 +36,8 @@ public class ApartmentDetailReadModel {
         this.to = apartment.getDateTo();
         this.sleepingPlaces = apartment.getSleepingPlaces();
         this.flatArea = apartment.getFlatArea();
-        this.country = apartment.getCountry();
-        this.city = apartment.getCity();
+        this.country = apartment.getAddress().getCountry();
+        this.city = apartment.getAddress().getCity();
         this.wifi = wifiDescription(apartment.isWiFi());
         this.parking = parkingDescription(apartment.isParkingAvailable());
         this.additionalFields = additionalFieldsDescription(apartment);
@@ -62,11 +62,11 @@ public class ApartmentDetailReadModel {
 
     private List<String> additionalFieldsDescription(Apartment apartment){
         List<String> result = new ArrayList<String>();
-        if(apartment.isNoAnimals())
+        if(apartment.getAdditionalField().isNoAnimals())
             result.add("Nie można trzymać zwierząt");
-        if(apartment.isBalconyAvailable())
+        if(apartment.getAdditionalField().isBalconyAvailable())
             result.add("Balkon dostępny");
-        if (apartment.isNoSmoking())
+        if (apartment.getAdditionalField().isNoSmoking())
             result.add("Nie można palić");
         if(result.isEmpty()){
             result.add("Brak");
@@ -76,8 +76,7 @@ public class ApartmentDetailReadModel {
     }
 
     private List<OpinionReadModel> getAllOpinionsFromApartment(Apartment apartment){
-        return apartment.getOpinions().stream().filter(opinion -> {
-            return opinion.getApartment() != null;
-        }).map(OpinionReadModel::new).collect(Collectors.toList());
+        return apartment.getOpinions().stream().filter(opinion
+                -> opinion.getApartment() != null).map(OpinionReadModel::new).collect(Collectors.toList());
     }
 }

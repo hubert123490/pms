@@ -46,7 +46,7 @@ values (2, 1, 1, 1, 1,1,0);
 /*APARTMENTS */
 insert into APARTMENTS
 values (0, 'test name 0', true, 4, 7, 70, true, DATE '2021-01-22', DATE '2021-05-11', 200, true, 'test photo 0', 3, 5, 'nowa','55-555','Kielce',
-        'Polska',true,true,true,true,true,true,0);
+        'Polska',true,true,true,true,true,true,1);
 -- insert into APARTMENTS
 -- values (1, 'test name 1', 1, 2, 30, 1, DATE '2021-03-11', DATE '2021-08-11', 150, 0, 1, 'test photo 0', 1, 1, 1);
 

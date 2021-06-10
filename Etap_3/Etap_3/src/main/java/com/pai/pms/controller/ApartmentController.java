@@ -4,6 +4,7 @@ import com.pai.pms.logic.service.ApartmentService;
 import com.pai.pms.model.dto.ApartmentReadModel;
 import com.pai.pms.model.entities.AdditionalField;
 import com.pai.pms.model.entities.Apartment;
+import com.pai.pms.payload.request.AddApartmentRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,8 +65,13 @@ public class ApartmentController {
 
     @PostMapping("/apartment/add")
     @ResponseStatus(HttpStatus.CREATED)
-    public Apartment addNewApartment(@RequestBody Apartment apartment) {
-        return service.addNewApartment(apartment);
+    public ResponseEntity<ApartmentReadModel> addNewApartment(@RequestBody AddApartmentRequest request) {
+        try {
+            return ResponseEntity.ok(service.addNewApartment(request));
+        }catch (NullPointerException e){
+            e.printStackTrace();
+            return ResponseEntity.notFound().build();
+        }
     }
 
 

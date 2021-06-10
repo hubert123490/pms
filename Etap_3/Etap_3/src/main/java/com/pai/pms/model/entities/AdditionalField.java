@@ -14,9 +14,10 @@ public class AdditionalField {
     private boolean noSmoking;
     private boolean noAnimals;
     private boolean noParties;
-    private boolean parkingAvailable;
     private boolean balconyAvailable;
     private boolean shopsNearby;
+    @OneToOne(mappedBy = "additionalField")
+    private Apartment apartment;
 
     public AdditionalField() {
     }
@@ -53,14 +54,6 @@ public class AdditionalField {
         this.noParties = noParties;
     }
 
-    public boolean isParkingAvailable() {
-        return parkingAvailable;
-    }
-
-    public void setParkingAvailable(boolean parkingAvailable) {
-        this.parkingAvailable = parkingAvailable;
-    }
-
     public boolean isBalconyAvailable() {
         return balconyAvailable;
     }
@@ -77,4 +70,11 @@ public class AdditionalField {
         this.shopsNearby = shopsNearby;
     }
 
+    public Apartment getApartment() {
+        return apartment;
+    }
+
+    public void setApartment(Apartment apartment) {
+        this.apartment = apartment;
+    }
 }

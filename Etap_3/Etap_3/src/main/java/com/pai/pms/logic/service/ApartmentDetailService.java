@@ -23,6 +23,7 @@ public class ApartmentDetailService {
     public ApartmentDetailReadModel readApartmentDetails(int apartmentId){
         Apartment apartment =  repository.findById(apartmentId).orElse(null);
         if(apartment != null){
+            logger.info("Reading apartment details");
             return new ApartmentDetailReadModel(apartment);
         }
         throw new NullPointerException("ApartmentDetailService - returned value from repository is null");

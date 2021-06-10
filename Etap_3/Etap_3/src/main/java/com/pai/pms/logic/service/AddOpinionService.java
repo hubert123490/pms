@@ -16,6 +16,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
+import java.util.List;
 
 @Service
 public class AddOpinionService {
@@ -37,7 +39,17 @@ public class AddOpinionService {
         if(payment.getAgreement().getClient().getUser().getId() != userImpl.getId()){
             throw new IllegalAccessException("Klient nie kupił tej nieruchomości i nie może wystawić opini");
         }
-
+        List<Opinion> opinions = payment.getAgreement().getClient().getOpinions();
+        for (Opinion opinion:
+             opinions) {
+            if(opinion.getApartment() == payment.getAgreement().getApartment()){
+                logger.info("Replacing opinion");
+                opinion.setText(request.getOpinion());
+                opinion.setPublishedDate(LocalDate.now());
+                opinionRepository.save(opinion);
+                return new AddOpinionResponse(opinion);
+            }
+        }
         OpinionWriteModel opinionWriteModel = new OpinionWriteModel(request.getOpinion());
         Opinion opinion = opinionWriteModel.toOpinion(payment);
 

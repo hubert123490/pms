@@ -1,13 +1,10 @@
 package com.pai.pms.model.entities;
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
-import java.util.UUID;
 
 @Entity
 @Table(name = "apartments")
@@ -26,35 +23,26 @@ public class Apartment {
     private LocalDate dateTo;
     private double price;
     private boolean wiFi;
-    private boolean noSmoking;
-    private boolean noAnimals;
-    private boolean noParties;
     private boolean parkingAvailable;
-    private boolean balconyAvailable;
-    private boolean shopsNearby;
-    private int apartmentNumber;
-    @Column(name = "apartmentBuilding", nullable = false)
-    @Range(min = 1, message= "Address's number of the building must not be empty")
-    private int apartmentBuilding;
-    @NotBlank(message = "Address's street must not be empty")
-    private String street;
-    @NotBlank(message = "Address's postcode must not be empty")
-    private String postcode;
-    @NotBlank(message = "Address's city must not be empty")
-    private String city;
-    private String country;
     private String photo;
+    private String type;
 
+
+
+    @JoinColumn(name = "address_id")
+    @OneToOne
+    private Address address;
     @JoinColumn(name = "landlord_id")
     @ManyToOne
     private Landlord landlord;
     @OneToMany(mappedBy = "apartment")
     private Set<Agreement> agreements;
+    @JoinColumn(name = "additional_field_id")
+    @OneToOne
+    private AdditionalField additionalField;
 
     @OneToMany(mappedBy = "apartment")
     private List<Opinion> opinions;
-
-
 
     public Apartment() {
     }
@@ -155,6 +143,14 @@ public class Apartment {
         this.photo = photo;
     }
 
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
     public Landlord getLandlord() {
         return landlord;
     }
@@ -167,8 +163,16 @@ public class Apartment {
         return agreements;
     }
 
-    public void setAgreement(Set<Agreement> agreements) {
+    public void setAgreements(Set<Agreement> agreements) {
         this.agreements = agreements;
+    }
+
+    public AdditionalField getAdditionalField() {
+        return additionalField;
+    }
+
+    public void setAdditionalField(AdditionalField additionalField) {
+        this.additionalField = additionalField;
     }
 
     public List<Opinion> getOpinions() {
@@ -179,30 +183,6 @@ public class Apartment {
         this.opinions = opinions;
     }
 
-    public boolean isNoSmoking() {
-        return noSmoking;
-    }
-
-    public void setNoSmoking(boolean noSmoking) {
-        this.noSmoking = noSmoking;
-    }
-
-    public boolean isNoAnimals() {
-        return noAnimals;
-    }
-
-    public void setNoAnimals(boolean noAnimals) {
-        this.noAnimals = noAnimals;
-    }
-
-    public boolean isNoParties() {
-        return noParties;
-    }
-
-    public void setNoParties(boolean noParties) {
-        this.noParties = noParties;
-    }
-
     public boolean isParkingAvailable() {
         return parkingAvailable;
     }
@@ -211,71 +191,11 @@ public class Apartment {
         this.parkingAvailable = parkingAvailable;
     }
 
-    public boolean isBalconyAvailable() {
-        return balconyAvailable;
+    public String getType() {
+        return type;
     }
 
-    public void setBalconyAvailable(boolean balconyAvailable) {
-        this.balconyAvailable = balconyAvailable;
-    }
-
-    public boolean isShopsNearby() {
-        return shopsNearby;
-    }
-
-    public void setShopsNearby(boolean shopsNearby) {
-        this.shopsNearby = shopsNearby;
-    }
-
-    public void setAgreements(Set<Agreement> agreements) {
-        this.agreements = agreements;
-    }
-
-    public int getApartmentNumber() {
-        return apartmentNumber;
-    }
-
-    public void setApartmentNumber(int apartmentNumber) {
-        this.apartmentNumber = apartmentNumber;
-    }
-
-    public int getApartmentBuilding() {
-        return apartmentBuilding;
-    }
-
-    public void setApartmentBuilding(int apartmentBuilding) {
-        this.apartmentBuilding = apartmentBuilding;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public String getPostcode() {
-        return postcode;
-    }
-
-    public void setPostcode(String postcode) {
-        this.postcode = postcode;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
+    public void setType(String type) {
+        this.type = type;
     }
 }

@@ -26,6 +26,7 @@ public class ApartmentDetailController {
             logger.info("reading apartment with id: " + id);
             return ResponseEntity.ok(service.readApartmentDetails(id));
         }catch (NullPointerException e){
+            e.printStackTrace();
             return ResponseEntity.notFound().build();
         }
     }

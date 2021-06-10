@@ -11,6 +11,7 @@ import com.pai.pms.model.entities.Client;
 import com.pai.pms.model.entities.Landlord;
 import com.pai.pms.model.entities.Role;
 import com.pai.pms.model.entities.User;
+import com.pai.pms.model.enums.AuthProvider;
 import com.pai.pms.model.enums.ERole;
 import com.pai.pms.model.repository.ClientRepository;
 import com.pai.pms.model.repository.LandlordRepository;
@@ -36,7 +37,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
-@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth/landlord")
 public class LandlordAuthController {
@@ -84,13 +84,13 @@ public class LandlordAuthController {
         if (userRepository.existsByLogin(signUpRequest.getUsername())) {
             return ResponseEntity
                     .badRequest()
-                    .body(new MessageResponse("Error: Username is already taken!"));
+                    .body(new MessageResponse("Error: Nazwa użytkownika w użyciu!"));
         }
 
         if (userRepository.existsByEmail(signUpRequest.getEmail())) {
             return ResponseEntity
                     .badRequest()
-                    .body(new MessageResponse("Error: Email is already in use!"));
+                    .body(new MessageResponse("Error: Email w użyciu!"));
         }
 
         // Create new user's account
@@ -133,10 +133,11 @@ public class LandlordAuthController {
         }
 
         user.setRoles(roles);
+        user.setProvider(AuthProvider.local);
         userRepository.save(user);
 //        clientRepository.save(client);
         landlordRepository.save(landlord);
 
-        return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+        return ResponseEntity.ok(new MessageResponse("Właściciel nieruchomości zalogowany pomyślnie!"));
     }
 }

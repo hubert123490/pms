@@ -1,7 +1,6 @@
 package com.pai.pms.model.dto;
 
 import com.pai.pms.model.entities.Address;
-import com.pai.pms.model.entities.Apartment;
 import com.pai.pms.model.entities.Payment;
 import lombok.Data;
 
@@ -23,7 +22,7 @@ public class BoughtApartmentDetailReadModel {
 
     public BoughtApartmentDetailReadModel(Payment payment) {
         this.apartmentName = payment.getAgreement().getApartment().getName();
-        this.address = makeAddress(payment.getAgreement().getApartment());
+        this.address = makeAddress(payment.getAgreement().getApartment().getAddress());
         this.phoneNumber = payment.getAgreement().getLandlord().getUser().getPhone();
         this.dateFrom = payment.getAgreement().getDateFrom();
         this.dateTo = payment.getAgreement().getDateTo();
@@ -35,11 +34,13 @@ public class BoughtApartmentDetailReadModel {
 
     private List<String> additionalFieldsDescription(Payment payment){
         List<String> result = new ArrayList<String>();
-        if(payment.getAgreement().getApartment().isNoAnimals())
+        if(payment.getAgreement().getApartment().getAdditionalField().isNoAnimals())
             result.add("Możliwość trzymania zwierząt");
-        if(payment.getAgreement().getApartment().isBalconyAvailable())
+        if(payment.getAgreement().getApartment().getAdditionalField().isBalconyAvailable())
             result.add("Balkon dostępny");
-        if (payment.getAgreement().getApartment().isNoSmoking())
+        if (payment.getAgreement().getApartment().getAdditionalField().isNoSmoking())
+            result.add("Możliwość palenia");
+        if (payment.getAgreement().getApartment().getAdditionalField().isNoParties())
             result.add("Możliwość palenia");
         if(result.isEmpty()){
             result.add("Brak");
@@ -47,7 +48,7 @@ public class BoughtApartmentDetailReadModel {
         return result;
     }
 
-    private String makeAddress(Apartment apartment){
-        return apartment.getCountry() + " " + apartment.getCity() + " " + apartment.getStreet() + " " + apartment.getApartmentBuilding();
+    private String makeAddress(Address address){
+        return address.getCountry() + " " + address.getCity() + " " + address.getStreet() + " " + address.getApartmentBuilding();
     }
 }

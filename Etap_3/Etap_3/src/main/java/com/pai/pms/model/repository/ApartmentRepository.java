@@ -17,9 +17,9 @@ public interface ApartmentRepository  extends JpaRepository<Apartment,Integer> {
 
     List<Apartment> findAllByName(String name);
 
-    List<Apartment> findAllByCity(String city);
+    List<Apartment> findAllByAddress_City(String city);
 
-    List<Apartment> findAllByDateFromLessThanAndDateToGreaterThanAndCity(LocalDate from, LocalDate to, String city);
+    List<Apartment> findAllByDateFromLessThanAndDateToGreaterThanAndAddress_City(LocalDate from, LocalDate to, String city);
 
     Optional<Apartment> findById(int id);
 

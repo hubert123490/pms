@@ -10,14 +10,14 @@ DROP TABLE if exists payments;
 
 CREATE table users
 (
-    id        int primary key auto_increment,
-    name      varchar(100),
-    last_name varchar(100),
-    email     varchar(100) not null,
-    phone     int,
-    login     varchar(100) not null,
-    password  varchar(100) not null,
-    provider varchar(15),
+    id          int primary key auto_increment,
+    name        varchar(100),
+    last_name   varchar(100),
+    email       varchar(100) not null,
+    phone       int,
+    login       varchar(100) not null,
+    password    varchar(100) not null,
+    provider    varchar(15),
     provider_id varchar(30)
 );
 
@@ -44,27 +44,26 @@ create table addresses
 
 CREATE TABLE landlords
 (
-    id         int primary key auto_increment,
-    id_card    int not null,
-    user_id    int not null,
+    id      int primary key auto_increment,
+    id_card int not null,
+    user_id int not null,
     foreign key (user_id) references users (id)
 );
 create table additional_fields
 (
-    id                 int primary key auto_increment,
-    no_smoking      BIT not null,
-    no_animals      BIT not null,
-    no_parties      BIT not null,
-    parking_available  BIT not null,
-    balcony_available  BIT not null,
-    shops_nearby BIT not null
+    id                int primary key auto_increment,
+    no_smoking        BIT not null,
+    no_animals        BIT not null,
+    no_parties        BIT not null,
+    balcony_available BIT not null,
+    shops_nearby      BIT not null
 );
 
 CREATE TABLE apartments
 (
     id                  int primary key auto_increment,
     name                varchar(100) not null,
-    discount            BIT null,
+    discount            BIT          null,
     room_number         int          null,
     sleeping_places     int          null,
     flat_area           int          null,
@@ -73,21 +72,16 @@ CREATE TABLE apartments
     date_to             DATE,
     price               double       not null,
     wi_fi               BIT,
+    parking_available   BIT,
     photo               varchar(100),
-    apartment_number   int,
-    apartment_building int          not null,
-    street             varchar(100) not null,
-    postcode           varchar(100) not null,
-    city               varchar(100) not null,
-    country            varchar(100),
-    no_smoking      BIT not null,
-    no_animals      BIT not null,
-    no_parties      BIT not null,
-    parking_available  BIT not null,
-    balcony_available  BIT not null,
-    shops_nearby BIT not null,
-    landlord_id         int,
-    foreign key (landlord_id) references landlords (id)
+    type                varchar(20),
+    landlord_id         int          not null,
+    address_id          INT          not null,
+    additional_field_id int          not null,
+    foreign key (landlord_id) references landlords (id),
+    foreign key (address_id) references addresses (id),
+    foreign key (additional_field_id) references additional_fields (id)
+
 );
 
 create table opinions
@@ -112,7 +106,7 @@ create table agreements
     deposit      double null,
     date_from    date   not null,
     date_to      date   not null,
-    daily_fee  double not null,
+    daily_fee    double not null,
     client_id    int    not null,
     apartment_id int    not null,
     landlord_id  int    not null,
@@ -126,15 +120,15 @@ create table payments
     id           int primary key auto_increment,
     date         date   not null,
     fee          double not null,
-    payment_done bit not null ,
+    payment_done bit    not null,
     agreement_id int    not null,
     foreign key (agreement_id) references agreements (id)
 );
 
 create table tourist_attraction
 (
-    id int primary key auto_increment,
-    city varchar(100) not null,
+    id          int primary key auto_increment,
+    city        varchar(100) not null,
     description varchar(250) not null
 );
 

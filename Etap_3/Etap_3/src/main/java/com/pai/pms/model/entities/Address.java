@@ -25,6 +25,8 @@ public class Address {
     private String city;
     @NotBlank(message = "Address's country must not be empty")
     private String country;
+    @OneToOne(mappedBy = "address")
+    private Apartment apartment;
 
     public Address() {
     }
@@ -85,4 +87,11 @@ public class Address {
         this.country = country;
     }
 
+    public Apartment getApartment() {
+        return apartment;
+    }
+
+    public void setApartment(Apartment apartment) {
+        this.apartment = apartment;
+    }
 }

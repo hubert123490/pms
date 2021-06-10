@@ -2,7 +2,10 @@ package com.pai.pms.logic.service;
 
 import com.pai.pms.model.dto.ApartmentReadModel;
 import com.pai.pms.model.entities.Apartment;
+import com.pai.pms.model.repository.AdditionalFieldsRepository;
+import com.pai.pms.model.repository.AddressRepository;
 import com.pai.pms.model.repository.ApartmentRepository;
+import com.pai.pms.model.repository.UserRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -21,11 +24,15 @@ class ApartmentServiceTest {
     void readAll() {
         //given
         var mockRepository = mock(ApartmentRepository.class);
+        var mockRepositoryUser = mock(UserRepository.class);
+        var mockRepositoryAdditionalField = mock(AdditionalFieldsRepository.class);
+        var mockRepositoryAddress = mock(AddressRepository.class);
         Apartment apartment1 = initApartment("test 0", 20.00, 3);
         Apartment apartment2 = initApartment("test 1", 34.00, 5);
         when(mockRepository.findAll()).thenReturn(List.of(apartment1, apartment2));
         //SUT
-        ApartmentService SUT = new ApartmentService(mockRepository);
+        ApartmentService SUT = new ApartmentService(mockRepository, mockRepositoryAdditionalField, mockRepositoryAddress,
+                mockRepositoryUser);
 
         //when
         List<ApartmentReadModel> result = SUT.readAll();
@@ -40,6 +47,9 @@ class ApartmentServiceTest {
     void readAllInCertainTimePeriod_AllParamsSet() {
         //given
         var mockRepository = mock(ApartmentRepository.class);
+        var mockRepositoryUser = mock(UserRepository.class);
+        var mockRepositoryAdditionalField = mock(AdditionalFieldsRepository.class);
+        var mockRepositoryAddress = mock(AddressRepository.class);
         LocalDate from = LocalDate.of(2021, 4, 2);
         LocalDate to = LocalDate.of(2021, 7, 3);
 
@@ -49,7 +59,8 @@ class ApartmentServiceTest {
         when(mockRepository.findAllByDateFromLessThanAndDateToGreaterThan(from, to)).thenReturn(List.of(apartment2));
 
         //SUT
-        ApartmentService SUT = new ApartmentService(mockRepository);
+        ApartmentService SUT = new ApartmentService(mockRepository, mockRepositoryAdditionalField, mockRepositoryAddress,
+                mockRepositoryUser);
 
         //when
         List<ApartmentReadModel> result = SUT.readAllInCertainTimePeriod(from, to);
