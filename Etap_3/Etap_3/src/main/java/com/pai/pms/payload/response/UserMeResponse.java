@@ -6,11 +6,16 @@ public class UserMeResponse {
     private Integer id;
     private String email;
     private List<String> roles;
+    private String firstName;
+    private String lastName;
 
-    public UserMeResponse(Integer id, String email, List<String> roles) {
+
+    public UserMeResponse(Integer id, String email, List<String> roles, String firstName, String lastName) {
         this.id = id;
         this.email = email;
         this.roles = roles;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     public Integer getId() {
@@ -35,5 +40,21 @@ public class UserMeResponse {
 
     public void setRoles(List<String> roles) {
         this.roles = roles;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }
