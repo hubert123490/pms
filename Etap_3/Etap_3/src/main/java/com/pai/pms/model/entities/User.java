@@ -22,12 +22,10 @@ public class User {
     private int id;
     private String name;
     private String lastName;
-    @NotBlank(message = "User's email must not be empty")
+    @NotBlank(message = "Email nie może być pusty")
     private String email;
     private int phone;
-    @NotBlank(message = "User's login must not be empty")
-    private String login;
-    @NotBlank(message = "User's password must not be empty")
+    @NotBlank(message = "Hasło nie może być puste")
     private String password;
     @NotNull
     @Enumerated(EnumType.STRING)
@@ -49,8 +47,7 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Opinion> opinions;
 
-    public User(String username, String email, String password, String firstName, String lastName) {
-        this.login = username;
+    public User(String email, String password, String firstName, String lastName) {
         this.email = email;
         this.password = password;
         this.name = firstName;
@@ -97,13 +94,6 @@ public class User {
         this.phone = phone;
     }
 
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
 
     public String getPassword() {
         return password;

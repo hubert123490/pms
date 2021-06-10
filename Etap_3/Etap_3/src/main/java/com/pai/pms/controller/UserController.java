@@ -31,6 +31,6 @@ public class UserController {
                 .map(item -> item.getAuthority())
                 .collect(Collectors.toList());
 
-        return ResponseEntity.ok(new UserMeResponse(user.getId(), user.getLogin(), user.getEmail(), roles));
+        return ResponseEntity.ok(new UserMeResponse(user.getId(), user.getEmail(), roles));
     }
 }

@@ -19,6 +19,6 @@ public class ApartmentReadModel {
 
 
     private String makeApartmentDescription(Apartment apartment) {
-        return apartment.getName() + " apartment, with " + apartment.getSleepingPlaces() + " free rooms.";
+        return apartment.getName() + " apartament z " + apartment.getSleepingPlaces() + " wolnymi pokojami.";
     }
 }

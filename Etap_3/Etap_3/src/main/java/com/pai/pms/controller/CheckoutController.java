@@ -38,7 +38,6 @@ public class CheckoutController {
         model.addAttribute("apartmentName", payment.getAgreement().getApartment().getName());
         model.addAttribute("userName", payment.getAgreement().getClient().getUser().getName());
         model.addAttribute("userLastName", payment.getAgreement().getClient().getUser().getLastName());
-        model.addAttribute("login", payment.getAgreement().getClient().getUser().getLogin());
         model.addAttribute("paymentId", payment.getId());
         model.addAttribute("amount", (int)payment.getFee() * 100);
         model.addAttribute("stripePublicKey", stripePublicKey);

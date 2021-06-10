@@ -13,9 +13,9 @@ public class TouristAttraction {
     @GeneratedValue(generator = "inc")
     @GenericGenerator(name = "inc", strategy = "increment")
     private int id;
-    @NotBlank(message = "City must not be empty")
+    @NotBlank(message = "Miasto nie może być puste")
     private String city;
-    @NotBlank(message = "Description must not be empty")
+    @NotBlank(message = "Opis nie może być pusty")
     private String description;
 
     public int getId() {

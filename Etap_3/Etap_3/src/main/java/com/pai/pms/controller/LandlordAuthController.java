@@ -62,7 +62,7 @@ public class LandlordAuthController {
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
         Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
+                new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = jwtUtils.generateJwtToken(authentication);
@@ -74,19 +74,12 @@ public class LandlordAuthController {
 
         return ResponseEntity.ok(new JwtResponse(jwt,
                 userDetails.getId(),
-                userDetails.getUsername(),
                 userDetails.getEmail(),
                 roles));
     }
 
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
-        if (userRepository.existsByLogin(signUpRequest.getUsername())) {
-            return ResponseEntity
-                    .badRequest()
-                    .body(new MessageResponse("Error: Nazwa użytkownika w użyciu!"));
-        }
-
         if (userRepository.existsByEmail(signUpRequest.getEmail())) {
             return ResponseEntity
                     .badRequest()
@@ -94,11 +87,8 @@ public class LandlordAuthController {
         }
 
         // Create new user's account
-        User user = new User(signUpRequest.getUsername(),
-                signUpRequest.getEmail(),
+        User user = new User(signUpRequest.getEmail(),
                 encoder.encode(signUpRequest.getPassword()), signUpRequest.getFirstName(), signUpRequest.getLastName());
-        // associate User with client
-//        Client client = new Client(0, 0, "Not given", user);
         Landlord landlord = new Landlord(user);
 
         Set<String> strRoles = signUpRequest.getRole();
@@ -109,7 +99,6 @@ public class LandlordAuthController {
                     .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
             roles.add(userRole);
         } else {
-            //"role" : []
             strRoles.forEach(role -> {
                 switch (role) {
                     case "admin":
@@ -118,12 +107,6 @@ public class LandlordAuthController {
                         roles.add(adminRole);
 
                         break;
-//                    case "landlord":
-//                        Role modRole = roleRepository.findByName(ERole.ROLE_LANDLORD)
-//                                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-//                        roles.add(modRole);
-//
-//                        break;
                     default:
                         Role userRole = roleRepository.findByName(ERole.ROLE_LANDLORD)
                                 .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
@@ -135,7 +118,6 @@ public class LandlordAuthController {
         user.setRoles(roles);
         user.setProvider(AuthProvider.local);
         userRepository.save(user);
-//        clientRepository.save(client);
         landlordRepository.save(landlord);
 
         return ResponseEntity.ok(new MessageResponse("Właściciel nieruchomości zalogowany pomyślnie!"));

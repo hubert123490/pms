@@ -19,8 +19,6 @@ public class UserDetailsImpl implements UserDetails, OAuth2User {
 
     private Integer id;
 
-    private String login;
-
     private String email;
 
     @JsonIgnore
@@ -30,10 +28,9 @@ public class UserDetailsImpl implements UserDetails, OAuth2User {
 
     private Map<String, Object> attributes;
 
-    public UserDetailsImpl(Integer id, String username, String email, String password,
+    public UserDetailsImpl(Integer id, String email, String password,
                            Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
-        this.login = username;
         this.email = email;
         this.password = password;
         this.authorities = authorities;
@@ -46,7 +43,6 @@ public class UserDetailsImpl implements UserDetails, OAuth2User {
 
         return new UserDetailsImpl(
                 user.getId(),
-                user.getLogin(),
                 user.getEmail(),
                 user.getPassword(),
                 authorities);
@@ -78,7 +74,7 @@ public class UserDetailsImpl implements UserDetails, OAuth2User {
 
     @Override
     public String getUsername() {
-        return login;
+        return email;
     }
 
     @Override
