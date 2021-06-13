@@ -13,10 +13,12 @@ public class TouristAttraction {
     @GeneratedValue(generator = "inc")
     @GenericGenerator(name = "inc", strategy = "increment")
     private int id;
-    @NotBlank(message = "Miasto nie może być puste")
-    private String city;
+    private String name;
     @NotBlank(message = "Opis nie może być pusty")
     private String description;
+    @JoinColumn(name = "address_id")
+    @OneToOne
+    private Address address;
 
     public int getId() {
         return id;
@@ -26,12 +28,12 @@ public class TouristAttraction {
         this.id = id;
     }
 
-    public String getCity() {
-        return city;
+    public String getName() {
+        return name;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
@@ -40,5 +42,13 @@ public class TouristAttraction {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }

@@ -65,9 +65,9 @@ values ( 0, 0, 0, DATE '2021-02-02',DATE '2021-03-08', 300, 0, 0, 0);
 /*TOURIST_ATTRACTION*/
 
 insert into TOURIST_ATTRACTION
-values ( 0, 'Kielce', 'Często odwiedzane miejsce' );
+values ( 0, 'Muzeum', 'Często odwiedzane miejsce',0 );
 insert into TOURIST_ATTRACTION
-values ( 1, 'Warszawa', 'Miejsce lubiane przez turystów' );
+values ( 1, 'Warszawa', 'Miejsce lubiane przez turystów',1 );
 
 
 
