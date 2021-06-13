@@ -8,6 +8,7 @@ import com.pai.pms.model.repository.ApartmentRepository;
 import com.pai.pms.model.repository.UserRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.time.LocalDate;
 import java.util.List;
