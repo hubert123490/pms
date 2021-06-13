@@ -9,6 +9,8 @@ public class TouristAttractionDetailReadModel {
     private int id;
     private String name;
     private String description;
+    private String map;
+    private String firstImage;
     private int number;
     private int buildingNumber;
     private String street;
@@ -18,6 +20,8 @@ public class TouristAttractionDetailReadModel {
         this.id = touristAttraction.getId();
         this.name = touristAttraction.getName();
         this.description = touristAttraction.getDescription();
+        this.map = touristAttraction.getMap();
+        this.firstImage = touristAttraction.getFirstImage();
         this.number = touristAttraction.getAddress().getApartmentNumber();
         this.buildingNumber = touristAttraction.getAddress().getApartmentBuilding();
         this.street = touristAttraction.getAddress().getStreet();

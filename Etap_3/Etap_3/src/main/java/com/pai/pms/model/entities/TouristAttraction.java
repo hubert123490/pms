@@ -14,6 +14,9 @@ public class TouristAttraction {
     @GenericGenerator(name = "inc", strategy = "increment")
     private int id;
     private String name;
+    private String map;
+    private String firstImage;
+    private String secondImage;
     @NotBlank(message = "Opis nie może być pusty")
     private String description;
     @JoinColumn(name = "address_id")
@@ -50,5 +53,29 @@ public class TouristAttraction {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public String getMap() {
+        return map;
+    }
+
+    public void setMap(String map) {
+        this.map = map;
+    }
+
+    public String getFirstImage() {
+        return firstImage;
+    }
+
+    public void setFirstImage(String firstImage) {
+        this.firstImage = firstImage;
+    }
+
+    public String getSecondImage() {
+        return secondImage;
+    }
+
+    public void setSecondImage(String secondImage) {
+        this.secondImage = secondImage;
     }
 }
