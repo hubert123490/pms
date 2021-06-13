@@ -127,8 +127,13 @@ create table payments
 create table tourist_attraction
 (
     id          int primary key auto_increment,
-    city        varchar(100) not null,
-    description varchar(250) not null
+    name        varchar(100) not null,
+    description varchar(250) not null,
+    map varchar(500) not null,
+    first_image varchar(500) not null,
+    second_image varchar(500) not null,
+    address_id          INT          not null,
+    foreign key (address_id) references addresses (id)
 );
 
 create table images
