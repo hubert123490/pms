@@ -131,6 +131,15 @@ create table tourist_attraction
     description varchar(250) not null
 );
 
+create table images
+(
+    id         long primary key auto_increment,
+    name       varchar(300),
+    location   varchar(300),
+    apartment_id int,
+    foreign key (apartment_id) references apartments (id)
+);
+
 
 
 

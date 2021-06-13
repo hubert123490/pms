@@ -127,6 +127,6 @@ public class AuthController {
         userRepository.save(user);
         clientRepository.save(client);
 
-        return ResponseEntity.ok(new MessageResponse("Klient zalogowany pomyślnie!"));
+        return ResponseEntity.ok(new MessageResponse("Klient zarejestrowany pomyślnie!"));
     }
 }

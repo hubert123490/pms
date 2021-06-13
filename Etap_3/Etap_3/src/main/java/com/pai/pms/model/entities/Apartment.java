@@ -44,6 +44,9 @@ public class Apartment {
     @OneToMany(mappedBy = "apartment")
     private List<Opinion> opinions;
 
+    @OneToMany(mappedBy = "apartment")
+    private List<Image> images;
+
     public Apartment() {
     }
 
@@ -197,5 +200,13 @@ public class Apartment {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public List<Image> getImages() {
+        return images;
+    }
+
+    public void setImages(List<Image> images) {
+        this.images = images;
     }
 }

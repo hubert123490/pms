@@ -1,6 +1,7 @@
 package com.pai.pms.model.repository;
 
 import com.pai.pms.model.entities.Apartment;
+import com.pai.pms.model.entities.Payment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -25,5 +26,6 @@ public interface ApartmentRepository  extends JpaRepository<Apartment,Integer> {
 
     List<Apartment> findAllByDateFromLessThan(LocalDate from);
 
+    List<Apartment> findAllByLandlord_User_Id(Integer id);
 
 }
