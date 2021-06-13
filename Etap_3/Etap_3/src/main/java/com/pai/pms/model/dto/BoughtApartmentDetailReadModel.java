@@ -1,6 +1,7 @@
 package com.pai.pms.model.dto;
 
 import com.pai.pms.model.entities.Address;
+import com.pai.pms.model.entities.Image;
 import com.pai.pms.model.entities.Payment;
 import lombok.Data;
 
@@ -19,6 +20,7 @@ public class BoughtApartmentDetailReadModel {
     private String clientFirstName;
     private String clientLastName;
     private List<String> additionalFields;
+    private ImageReadModel image;
 
     public BoughtApartmentDetailReadModel(Payment payment) {
         this.apartmentName = payment.getAgreement().getApartment().getName();
@@ -30,6 +32,16 @@ public class BoughtApartmentDetailReadModel {
         this.clientFirstName = payment.getAgreement().getClient().getUser().getName();
         this.clientLastName = payment.getAgreement().getClient().getUser().getLastName();;
         this.additionalFields = additionalFieldsDescription(payment);
+        this.image = imageToRead(payment);
+    }
+
+    private ImageReadModel imageToRead(Payment payment){
+        List<Image> images = payment.getAgreement().getApartment().getImages();
+        if(images.size() > 0){
+            return new ImageReadModel(images.get(0));
+        }else{
+            return new ImageReadModel();
+        }
     }
 
     private List<String> additionalFieldsDescription(Payment payment){

@@ -30,6 +30,8 @@ public class AddOpinionService {
         this.opinionRepository = opinionRepository;
     }
 
+
+
     @Transactional
     public AddOpinionResponse addOpinion(AddOpinionRequest request) throws IllegalAccessException {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
