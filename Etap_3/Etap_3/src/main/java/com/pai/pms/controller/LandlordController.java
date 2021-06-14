@@ -1,6 +1,6 @@
 package com.pai.pms.controller;
 import com.pai.pms.logic.service.LandlordService;
-import com.pai.pms.model.dto.LandlordReadModel;
+import com.pai.pms.model.dto.LandlordClientReadModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +24,7 @@ public class LandlordController {
     @GetMapping
     @PreAuthorize("hasRole('LANDLORD')")
     @RequestMapping("/landlords")
-    ResponseEntity<List<LandlordReadModel>> readAllLandlords() {
-        return ResponseEntity.ok(service.readAll());
+    ResponseEntity<List<LandlordClientReadModel>> readAllLandlords() {
+        return ResponseEntity.ok(service.readAllClients());
     }
 }
