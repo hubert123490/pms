@@ -15,5 +15,5 @@ import java.util.Optional;
 public interface TouristAttractionRepository  extends JpaRepository<TouristAttraction,Integer> {
 
     Optional<TouristAttraction> findById(int id);
-
+    List<TouristAttraction> findAllByAddress_City(String city);
 }
