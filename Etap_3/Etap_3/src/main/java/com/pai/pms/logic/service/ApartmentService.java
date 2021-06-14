@@ -19,6 +19,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -47,7 +48,7 @@ public class ApartmentService {
     }
 
     public List<ApartmentReadModel> readAllInCertainTimePeriod(LocalDate from, LocalDate to) {
-        return repository.findAllByDateFromLessThanAndDateToGreaterThan(from, to).stream().map(ApartmentReadModel::new).collect(Collectors.toList());
+        return repository.findAllByDateFromLessThanEqualAndDateToGreaterThanEqual(from, to).stream().map(ApartmentReadModel::new).collect(Collectors.toList());
     }
 
     public List<ApartmentReadModel> readAllInCertainTimePeriodAndCity(LocalDate from, LocalDate to, String city){
@@ -55,7 +56,16 @@ public class ApartmentService {
     }
 
     public List<ApartmentReadModel> readAllFrom(LocalDate from){
-        return repository.findAllByDateFromLessThan(from).stream().map(ApartmentReadModel::new).collect(Collectors.toList());
+        //return repository.findAllByDateToGreaterThanEqualDateFromLessThanEqual(from).stream().map(ApartmentReadModel::new).collect(Collectors.toList());
+        List<Apartment> apartments = repository.findAll();
+        List<ApartmentReadModel> availableApartments = new ArrayList<ApartmentReadModel>();
+        for (Apartment apartment:
+             apartments) {
+            if(isWithinRange(from, apartment)){
+                availableApartments.add(new ApartmentReadModel(apartment));
+            }
+        }
+        return availableApartments;
     }
 
     public List<ApartmentReadModel> readAllWithFilters(LocalDate from, LocalDate to, String name) {
@@ -109,5 +119,9 @@ public class ApartmentService {
         addressRepository.save(address);
         repository.save(apartment);
         return "Ok";
+    }
+
+    private boolean isWithinRange(LocalDate date, Apartment apartment) {
+        return !(date.isBefore(apartment.getDateFrom()) || date.isAfter(apartment.getDateTo()));
     }
 }
