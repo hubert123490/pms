@@ -9,14 +9,12 @@ import static java.time.temporal.ChronoUnit.DAYS;
 
 public class PaymentWriteModel {
 
-
     public Payment toPayment(Agreement agreement){
         Payment payment = new Payment();
         payment.setDate(LocalDate.now());
         payment.setPaymentDone(false);
-        payment.setFee((DAYS.between(agreement.getDateFrom(), agreement.getDateTo()) * agreement.getApartment().getPrice())*agreement.getDiscount()); //calculating fee from period
+        payment.setFee((DAYS.between(agreement.getDateFrom(), agreement.getDateTo()) * agreement.getApartment().getPrice())* (agreement.getApartment().isDiscount() ? 0.9 : 1)); //calculating fee from period
         payment.setAgreement(agreement);
         return payment;
     }
-
 }
