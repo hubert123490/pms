@@ -87,7 +87,7 @@ public class ApartmentService {
         throw new IllegalStateException();
     }
 
-    public ApartmentReadModel addNewApartment(AddApartmentRequest request) {
+    public String addNewApartment(AddApartmentRequest request) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         UserDetailsImpl userImpl = (UserDetailsImpl)authentication.getPrincipal();
 
@@ -108,6 +108,6 @@ public class ApartmentService {
         additionalFieldsRepository.save(additionalField);
         addressRepository.save(address);
         repository.save(apartment);
-        return new ApartmentReadModel(apartment);
+        return "Ok";
     }
 }

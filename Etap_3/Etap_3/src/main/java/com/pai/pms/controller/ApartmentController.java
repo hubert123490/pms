@@ -66,7 +66,7 @@ public class ApartmentController {
     @PostMapping("/apartment/add")
     @PreAuthorize("hasRole('LANDLORD')")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<ApartmentReadModel> addNewApartment(@RequestBody AddApartmentRequest request) {
+    public ResponseEntity<String> addNewApartment(@RequestBody AddApartmentRequest request) {
         try {
             return ResponseEntity.ok(service.addNewApartment(request));
         }catch (NullPointerException e){

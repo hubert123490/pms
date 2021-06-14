@@ -1,6 +1,7 @@
 package com.pai.pms.model.dto;
 
 import com.pai.pms.model.entities.Apartment;
+import com.pai.pms.model.entities.Image;
 import lombok.Data;
 
 import java.util.List;
@@ -19,7 +20,16 @@ public class ApartmentReadModel {
         this.description = makeApartmentDescription(apartment);
         this.price = apartment.getPrice();
         this.city = apartment.getAddress().getCity();
-        this.images = apartment.getImages().stream().map(ImageReadModel::new).collect(Collectors.toList());
+        this.images = readImages(apartment);
+    }
+
+    private List<ImageReadModel> readImages(Apartment apartment){
+        if(apartment.getImages() != null) {
+            List<ImageReadModel> images = apartment.getImages().stream().map(ImageReadModel::new).collect(Collectors.toList());
+            return images;
+        }else{
+            return List.of();
+        }
     }
 
     private String makeApartmentDescription(Apartment apartment) {

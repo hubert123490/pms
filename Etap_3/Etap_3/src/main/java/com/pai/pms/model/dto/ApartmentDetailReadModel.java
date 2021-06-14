@@ -45,7 +45,16 @@ public class ApartmentDetailReadModel {
         this.contact = apartment.getLandlord().getUser().getPhone();
         this.price = apartment.getPrice();
         this.opinionReadModel = getAllOpinionsFromApartment(apartment);
-        this.images = apartment.getImages().stream().map(ImageReadModel::new).collect(Collectors.toList());
+        this.images = readImages(apartment);
+    }
+
+    private List<ImageReadModel> readImages(Apartment apartment){
+        if(apartment.getImages() != null) {
+            List<ImageReadModel> images = apartment.getImages().stream().map(ImageReadModel::new).collect(Collectors.toList());
+            return images;
+        }else{
+            return List.of();
+        }
     }
 
     private String wifiDescription(Boolean isWifi){
