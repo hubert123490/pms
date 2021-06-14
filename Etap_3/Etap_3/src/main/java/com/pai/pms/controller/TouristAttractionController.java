@@ -43,10 +43,16 @@ private final TouristAttractionService service;
         this.service = service;
     }
 
+//    @GetMapping
+//    @RequestMapping("/tourist_attraction")
+//    ResponseEntity<List<TouristAttractionReadModel>> readAllTouristAttraction() {
+//        return ResponseEntity.ok(service.readAll());
+//    }
+
     @GetMapping
-    @RequestMapping("/tourist_attraction")
-    ResponseEntity<List<TouristAttractionReadModel>> readAllTouristAttraction() {
-        return ResponseEntity.ok(service.readAll());
+    @RequestMapping("/tourist_attraction/read")
+    ResponseEntity<List<TouristAttractionReadModel>> readAllTouristAttractionWithFilters(@Param("name") String name) {
+        return ResponseEntity.ok(service.readAllWithFilters(name));
     }
 
 }
