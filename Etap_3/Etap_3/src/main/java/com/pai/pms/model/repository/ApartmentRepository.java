@@ -14,7 +14,7 @@ import java.util.Optional;
 @Repository
 public interface ApartmentRepository  extends JpaRepository<Apartment,Integer> {
 
-    List<Apartment> findAllByDateFromLessThanAndDateToGreaterThan(LocalDate from, LocalDate to);
+    List<Apartment> findAllByDateFromLessThanEqualAndDateToGreaterThanEqual(LocalDate from, LocalDate to);
 
     List<Apartment> findAllByName(String name);
 

@@ -94,8 +94,16 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
         user.setProvider(AuthProvider.valueOf(oAuth2UserRequest.getClientRegistration().getRegistrationId()));
         user.setProviderId(oAuth2UserInfo.getId());
         String[] nameCredentials = oAuth2UserInfo.getName().split(" ");
-        user.setName(nameCredentials[0]);
-        user.setLastName(nameCredentials[1]);
+        if(nameCredentials[0] == null || nameCredentials[0].equals("")){
+            user.setName("user");
+        }else{
+            user.setName(nameCredentials[0]);
+        }
+        if(nameCredentials[1] == null || nameCredentials[1].equals("")){
+            user.setLastName("user");
+        }else{
+            user.setLastName(nameCredentials[1]);
+        }
         user.setEmail(oAuth2UserInfo.getEmail());
         user.setPassword(encoder.encode(generatedString));
         Client client = new Client(0, 0, "Not given", user);
