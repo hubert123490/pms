@@ -4,6 +4,7 @@ import com.pai.pms.model.entities.Apartment;
 import com.pai.pms.model.entities.Image;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -13,6 +14,8 @@ public class ApartmentReadModel {
     private String description;
     private double price;
     private String city;
+    private LocalDate dateFrom;
+    private LocalDate dateTo;
     private List<ImageReadModel> images;
 
     public ApartmentReadModel(Apartment apartment) {
@@ -20,6 +23,8 @@ public class ApartmentReadModel {
         this.description = makeApartmentDescription(apartment);
         this.price = apartment.getPrice();
         this.city = apartment.getAddress().getCity();
+        this.dateFrom = apartment.getDateFrom();
+        this.dateTo = apartment.getDateTo();
         this.images = readImages(apartment);
     }
 
